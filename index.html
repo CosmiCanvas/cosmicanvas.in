@@ -1,182 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cosmic Canvas Animation Test</title>
-<style>
-  body {
-    background: #0a0a23;
-    color: #eee;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  header {
-    position: fixed;
-    width: 100%;
-    background: #1b1464;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    z-index: 1000;
-    color: #f9f871;
-    text-align: center;
-  }
-  main {
-    padding: 6rem 2rem 2rem;
-    max-width: 1200px;
-    margin: auto;
-  }
-  section {
-    margin-bottom: 4rem;
-    border-radius: 10px;
-    padding: 1.5rem;
-    background: #121136;
-    box-shadow: 0 0 10px #6200ee44 inset;
-  }
-  h2 {
-    color: #f06292;
-    border-bottom: 2px solid #f06292;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
-    grid-gap: 2rem;
-  }
-  .card {
-    background: #201f42;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 6px #bb86fcaa;
-  }
-  .card:hover {
-    box-shadow: 0 0 15px #bb86fcff;
-    transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
-  }
-  .card h3 {
-    color: #bb86fc;
-    margin-top: 0;
-  }
-  .btn {
-    background: #bb86fc;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #121212;
-    font-weight: bold;
-    margin-top: 1rem;
-  }
-  .btn:hover {
-    background: #9f6ce1;
-  }
-  .scroll-box {
-    height: 200px;
-    overflow-y: scroll;
-    border: 2px solid #bb86fc;
-    padding: 1rem;
-    border-radius: 8px;
-  }
-  /* Animation keyframes */
-  @keyframes glow {
-    0%, 100% { box-shadow: 0 0 5px #bb86fc; }
-    50% { box-shadow: 0 0 20px #bb86fc; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosmic Canvas Photography</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #eee;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(90deg, #141e30, #243b55);
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.7);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 5px;
+      font-size: 2.8rem;
+      color: #ff3e78;
+      text-shadow: 0 0 15px #ff3e78;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #eee;
+      margin: 0 2rem;
+      font-weight: 300;
+      font-size: 1.2rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: #ff3e78;
+      width: 0;
+      transition: width 0.3s ease;
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      border-radius: 2px;
+    }
+    nav a:hover {
+      color: #ff3e78;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    section {
+      margin-bottom: 4rem;
+      line-height: 1.7;
+      border-radius: 12px;
+      padding: 2rem;
+      background: #222238;
+      box-shadow: 0 10px 30px rgba(255, 62, 120, 0.15);
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+    section:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+    section:nth-child(even) {
+      animation-delay: 0.8s;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      color: #ff3e78;
+      border-bottom: 3px solid #ff3e78;
+      display: inline-block;
+      padding-bottom: 0.25rem;
+    }
+    p.story {
+      max-height: 150px;
+      overflow-y: auto;
+      border-left: 4px solid #ff3e78;
+      padding-left: 1rem;
+      font-size: 1.1rem;
+      font-weight: 300;
+      background: #1a1a2f;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.7rem;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      background: #1a1a2f;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px #ff3e7833;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 300;
+      color: #888;
+      letter-spacing: 1.5px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px #ff3e78aa;
+      color: #ff3e78;
+      font-weight: 600;
+    }
+    .price-tag {
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      background: #ff3e78cc;
+      color: #fff;
+      padding: 0.3rem 1rem;
+      font-weight: 600;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 8px #ff3e78bb;
+      cursor: default;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(90deg, #141e30, #243b55);
+      color: #ff3e78aa;
+      letter-spacing: 4px;
+      font-weight: 600;
+      font-size: 1.4rem;
+      text-shadow: 0 0 8px #ff3e78aa;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
 <header>
-  <h1>Cosmic Canvas Animation Test</h1>
+  <h1>Cosmic Canvas</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#story">Story</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
+
 <main>
-  <section id="intro">
-    <h2>Introduction</h2>
-    <p>Testing a large static site with animations using Anime.js and CSS. Scroll down to see various animated cards, text, and hover effects.</p>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I'm a passionate photographer capturing moments that tell stories. Through my lens, I explore the beauty of the world from breathtaking landscapes to intimate portraits. My prints are more than just pictures; they are emotions frozen in time.</p>
   </section>
 
-  <section id="animated-cards">
-    <h2>Animated Cards</h2>
-    <div class="grid" id="cards-container">
-      <!-- Cards will be generated by JS -->
+  <section id="gallery">
+    <h2>Featured Prints</h2>
+    <div class="gallery">
+      <div class="gallery-item">Image 1 <div class="price-tag">$120</div></div>
+      <div class="gallery-item">Image 2 <div class="price-tag">$90</div></div>
+      <div class="gallery-item">Image 3 <div class="price-tag">$150</div></div>
+      <div class="gallery-item">Image 4 <div class="price-tag">$200</div></div>
+      <div class="gallery-item">Image 5 <div class="price-tag">$180</div></div>
+      <div class="gallery-item">Image 6 <div class="price-tag">$110</div></div>
     </div>
   </section>
 
-  <section id="scrollable-section">
-    <h2>Scrollable Box with Animation</h2>
-    <div class="scroll-box" id="scroll-box">
-      <p>Scroll down to see text fade in.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec consectetur libero, eu suscipit arcu. Aenean congue massa lectus, nec faucibus arcu lacinia ut. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-      <p>Phasellus suscipit lorem sed magna dapibus, nec dapibus dolor dapibus. Maecenas efficitur sapien sit amet odio viverra, at varius leo dictum.</p>
-      <p>Sed quis ex ultrices, pulvinar metus in, bibendum magna. Proin nec luctus nulla, non accumsan odio.</p>
-      <p>Scroll animation triggered by Anime.js on scroll event.</p>
-    </div>
+  <section id="story">
+    <h2>My Journey</h2>
+    <p class="story">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+      Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.
+      Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.
+      Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue.
+      Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
+      Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+      Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
+    </p>
   </section>
-  <section id="buttons">
-    <h2>Interactive Buttons</h2>
-    <button class="btn" id="btn-animate">Animate Me!</button>
+
+  <section id="contact">
+    <h2>Contact & Ordering</h2>
+    <p>Interested in purchasing a print or commissioning a custom shoot? Reach out!</p>
+    <p>Email: <a href="mailto:contact@cosmiccanvas.com" style="color:#ff3e78;">contact@cosmiccanvas.com</a></p>
+    <p>Phone: +91 98765 43210</p>
+    <p>Instagram: <a href="https://instagram.com/cosmiccanvas" style="color:#ff3e78;" target="_blank">@cosmiccanvas</a></p>
   </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<footer>
+  &copy; 2025 Cosmic Canvas. All rights reserved.
+</footer>
+
 <script>
-  // Generate 20 animated cards with scale loop
-  const container = document.getElementById('cards-container');
-  for (let i=1; i<=20; i++) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.innerHTML = `<h3>Card #${i}</h3><p>This is an animated card with subtle scaling and shadow glow.</p>`;
-    container.appendChild(card);
-  }
-
-  anime({
-    targets: '.card',
-    scale: [1, 1.05],
-    duration: 2000,
-    direction: 'alternate',
-    easing: 'easeInOutSine',
-    loop: true,
-    delay: anime.stagger(100),
-  });
-
-  // Scroll fade in for scroll-box paragraphs
-  const scrollBox = document.getElementById('scroll-box');
-  const paragraphs = scrollBox.querySelectorAll('p');
-  scrollBox.addEventListener('scroll', () => {
-    paragraphs.forEach(p => {
-      const rect = p.getBoundingClientRect();
-      if(rect.top < window.innerHeight && rect.bottom > 0) {
-        anime({
-          targets: p,
-          opacity: 1,
-          duration: 900,
-          easing: 'easeInOutQuad',
-          delay: 100
-        });
+  // Subtle fadeIn animations for sections on scroll
+  const sections = document.querySelectorAll('section');
+  window.addEventListener('scroll', () => {
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 100) {
+        section.style.opacity = '1';
+        section.style.transform = 'translateY(0px)';
+        section.style.transition = 'opacity 1s ease, transform 1s ease';
       } else {
-        anime({
-          targets: p,
-          opacity: 0.2,
-          duration: 900,
-          easing: 'easeInOutQuad',
-          delay: 100
-        });
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(40px)';
       }
-    });
-  });
-
-  // Button animation
-  const btn = document.getElementById('btn-animate');
-  btn.addEventListener('click', () => {
-    anime({
-      targets: btn,
-      scale: [
-        {value: 1.5, duration: 300, easing: 'easeOutExpo'},
-        {value: 1, duration: 600, easing: 'easeOutElastic(1, .8)'}
-      ],
-      rotate: '1turn'
     });
   });
 </script>
