@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Festival Frames</title>
+  <title>Wild Prints</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(135deg, #1b3a2f, #264d3d, #102820);
       color: #fff;
       overflow-x: hidden;
     }
@@ -28,7 +28,7 @@
     header h1 {
       font-size: 26px;
       font-weight: 900;
-      background: linear-gradient(45deg,#ffcc70,#ff8177,#ff4b1f);
+      background: linear-gradient(45deg,#c5e384,#f9d976,#f39f86);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -41,14 +41,14 @@
       transition: color 0.3s;
     }
     nav a:hover {
-      color: #ffcc70;
+      color: #f9d976;
     }
     nav a::after {
       content: "";
       position: absolute;
       bottom: -6px; left: 0;
       width: 0%; height: 2px;
-      background: #ffcc70;
+      background: #f9d976;
       transition: width 0.3s;
     }
     nav a:hover::after { width: 100%; }
@@ -65,22 +65,22 @@
       display: flex; flex-direction: column;
       justify-content: center; align-items: center;
       text-align: center;
-      background: url("https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1200&q=80") no-repeat center/cover;
+      background: url("https://images.unsplash.com/photo-1507149833265-60c372daea22?auto=format&fit=crop&w=1200&q=80") no-repeat center/cover;
       border-bottom: 1px solid rgba(255,255,255,0.2);
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.55);
     }
     .hero > * { position: relative; z-index: 2; }
     .hero h2 {
-      font-size: 58px;
+      font-size: 56px;
       line-height: 1.2;
       margin-bottom: 20px;
       animation: fadeDown 1.2s ease;
-      background: linear-gradient(90deg, #ffcc70, #ff8177, #ff4b1f);
+      background: linear-gradient(90deg, #c5e384, #f9d976, #f39f86);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -97,16 +97,16 @@
       display: inline-block;
       padding: 14px 34px;
       border-radius: 50px;
-      background: linear-gradient(45deg,#ff8177,#ffcc70,#ff4b1f);
+      background: linear-gradient(45deg,#f9d976,#f39f86,#c5e384);
       color: #000;
       font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(255,128,80,0.5);
+      box-shadow: 0 6px 20px rgba(249,217,118,0.4);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .btn:hover {
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(255,128,80,0.7);
+      box-shadow: 0 10px 25px rgba(249,217,118,0.6);
     }
 
     /* ==== ABOUT ==== */
@@ -116,7 +116,7 @@
     .about h2 {
       font-size: 38px;
       margin-bottom: 20px;
-      color: #ffcc70;
+      color: #f9d976;
     }
     .about p {
       max-width: 750px; margin: auto;
@@ -125,7 +125,7 @@
     }
 
     /* ==== GALLERY ==== */
-    .gallery h2 { font-size: 38px; color: #ffcc70; text-align: center; margin-bottom: 40px; }
+    .gallery h2 { font-size: 38px; color: #f9d976; text-align: center; margin-bottom: 40px; }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -142,27 +142,31 @@
     }
 
     /* ==== SHOP ==== */
-    .shop h2 { font-size: 38px; color: #ffcc70; text-align: center; margin-bottom: 40px; }
+    .shop h2 { font-size: 38px; color: #f9d976; text-align: center; margin-bottom: 40px; }
+    .shop-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
     .product {
-      max-width: 600px; margin: auto;
       background: rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 30px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      border-radius: 20px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
       text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
       transition: transform 0.3s;
     }
-    .product:hover { transform: translateY(-8px); }
-    .product img { width: 100%; border-radius: 16px; margin-bottom: 20px; }
-    .product h3 { margin-bottom: 10px; font-size: 24px; color: #ffcc70; }
-    .product p { margin-bottom: 15px; font-size: 17px; color: #ccc; }
+    .product:hover { transform: translateY(-6px); }
+    .product img { width: 100%; border-radius: 16px; margin-bottom: 15px; }
+    .product h3 { margin-bottom: 8px; font-size: 22px; color: #f9d976; }
+    .product p { margin-bottom: 12px; font-size: 16px; color: #ccc; }
 
     /* ==== CONTACT ==== */
     .contact {
       text-align: center;
     }
-    .contact h2 { font-size: 38px; margin-bottom: 20px; color: #ffcc70; }
+    .contact h2 { font-size: 38px; margin-bottom: 20px; color: #f9d976; }
     .contact p { font-size: 18px; margin-bottom: 25px; color: #ddd; }
 
     /* ==== FOOTER ==== */
@@ -188,7 +192,7 @@
 <body>
 
   <header>
-    <h1>Festival Frames</h1>
+    <h1>Wild Prints</h1>
     <nav>
       <a href="#hero">Home</a>
       <a href="#about">About</a>
@@ -199,45 +203,61 @@
   </header>
 
   <section id="hero" class="hero">
-    <h2>Capture the Spirit of Festivals</h2>
-    <p>Experience Kerala’s Theyyam and vibrant festivals through immersive photography — every frame a celebration of tradition and soul. Download wallpapers & photo packs crafted for you.</p>
+    <h2>Bring Nature & Pets Into Your Space</h2>
+    <p>Explore premium wildlife and pet photography — transformed into prints, wall art, and collectibles. From playful pets to majestic wild creatures, each print is crafted to make your walls come alive.</p>
     <a href="#shop" class="btn">Explore Shop</a>
   </section>
 
   <section id="about" class="about">
     <h2>About</h2>
-    <p>I’m Sreerag — a festival and culture photographer from Kerala. My mission is to freeze the beauty of traditions and share them with the world. From colorful Theyyam rituals to temple festivals, my collection lets you relive the energy and stories of Kerala.</p>
+    <p>I’m Sreerag — a wildlife & pet photographer capturing soulful animal portraits and natural moments. My mission is to turn these stories into beautiful wall art, from high-quality prints to Displate-style collectibles. Perfect for pet lovers, nature enthusiasts, and anyone who wants their walls to tell a story.</p>
   </section>
 
   <section id="gallery" class="gallery">
     <h2>Gallery</h2>
     <div class="gallery-grid">
-      <img src="https://picsum.photos/500/350?random=11" alt="Gallery">
-      <img src="https://picsum.photos/500/350?random=12" alt="Gallery">
-      <img src="https://picsum.photos/500/350?random=13" alt="Gallery">
-      <img src="https://picsum.photos/500/350?random=14" alt="Gallery">
+      <img src="https://picsum.photos/500/350?random=21" alt="Wildlife">
+      <img src="https://picsum.photos/500/350?random=22" alt="Pets">
+      <img src="https://picsum.photos/500/350?random=23" alt="Pet Portrait">
+      <img src="https://picsum.photos/500/350?random=24" alt="Wildlife Print">
     </div>
   </section>
 
   <section id="shop" class="shop">
     <h2>Shop</h2>
-    <div class="product">
-      <img src="https://picsum.photos/600/350?random=15" alt="Festival Pack">
-      <h3>Festival Wallpapers Pack</h3>
-      <p>10 exclusive high-resolution festival wallpapers — crafted for phone & desktop.</p>
-      <p><strong>Price: ₹199</strong></p>
-      <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20the%20Festival%20Wallpapers%20Pack" class="btn">Order via WhatsApp</a>
+    <div class="shop-items">
+      <div class="product">
+        <img src="https://picsum.photos/600/400?random=25" alt="Pet Print">
+        <h3>Custom Pet Portrait Print</h3>
+        <p>A personalized, high-quality print of your beloved pet. Available in multiple sizes and finishes.</p>
+        <p><strong>From ₹799</strong></p>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20a%20Custom%20Pet%20Portrait" class="btn">Order via WhatsApp</a>
+      </div>
+      <div class="product">
+        <img src="https://picsum.photos/600/400?random=26" alt="Wildlife Print">
+        <h3>Wildlife Wall Art</h3>
+        <p>Bold, high-resolution wildlife photography printed on premium materials — perfect for home or office walls.</p>
+        <p><strong>From ₹999</strong></p>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20Wildlife%20Wall%20Art" class="btn">Order via WhatsApp</a>
+      </div>
+      <div class="product">
+        <img src="https://picsum.photos/600/400?random=27" alt="Displate Style Print">
+        <h3>Metal Displate-Style Print</h3>
+        <p>Premium metal wall print with magnetic mounting. A modern, durable way to showcase wildlife & pet art.</p>
+        <p><strong>From ₹1499</strong></p>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20a%20Metal%20Displate%20Style%20Print" class="btn">Order via WhatsApp</a>
+      </div>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>Custom requests, collaborations, or bulk orders? Let’s connect!</p>
+    <p>Want to commission a custom pet portrait, bulk orders, or have a special request? Reach out directly on WhatsApp.</p>
     <a href="https://wa.me/91XXXXXXXXXX" class="btn">Chat on WhatsApp</a>
   </section>
 
   <footer>
-    <p>© 2025 Festival Frames | Crafted with ❤️ by Sreerag</p>
+    <p>© 2025 Wild Prints | Photography & Prints by Sreerag</p>
   </footer>
 
 </body>
