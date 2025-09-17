@@ -1,264 +1,455 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wild Prints</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WildPrints — Wildlife & Pet Prints</title>
+  <meta name="description" content="WildPrints — premium wildlife & pet prints. Custom pet portraits, metal prints, canvases." />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1b3a2f, #264d3d, #102820);
-      color: #fff;
-      overflow-x: hidden;
+    :root{
+      --bg:#f5f3ef; /* soft ivory */
+      --card:#ffffff;
+      --muted:#7a7a78;
+      --accent:#2f6f4e; /* forest green */
+      --accent-2:#f39c57; /* warm orange */
+      --glass: rgba(255,255,255,0.7);
+      --shadow: 0 8px 30px rgba(16,24,32,0.12);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Poppins,system-ui,Segoe UI,Roboto,Arial;
+      background: linear-gradient(180deg,var(--bg),#e9e6df 60%);
+      color:#1b1b1b;-webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* ==== HEADER ==== */
-    header {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      padding: 18px 50px;
-      display: flex; justify-content: space-between; align-items: center;
-      backdrop-filter: blur(12px);
-      background: rgba(0,0,0,0.4);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      z-index: 1000;
-    }
-    header h1 {
-      font-size: 26px;
-      font-weight: 900;
-      background: linear-gradient(45deg,#c5e384,#f9d976,#f39f86);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      font-weight: 500;
-      color: #eee;
-      position: relative;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #f9d976;
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -6px; left: 0;
-      width: 0%; height: 2px;
-      background: #f9d976;
-      transition: width 0.3s;
-    }
-    nav a:hover::after { width: 100%; }
+    /* HEADER */
+    header{position:fixed;inset:0 0 auto 0;height:72px;background:rgba(255,255,255,0.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:space-between;padding:14px 6%;box-shadow:var(--shadow);z-index:60}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#1e4f3a);display:flex;align-items:center;justify-content:center;color:white;font-weight:900}
+    h1{font-size:18px;margin:0}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--accent-2),#f6c36b);padding:10px 16px;border-radius:12px;color:#111;font-weight:800;text-decoration:none;box-shadow:0 8px 22px rgba(243,156,87,0.22)}
 
-    /* ==== SECTIONS ==== */
-    section {
-      min-height: 100vh;
-      padding: 120px 10% 60px;
-      position: relative;
-    }
+    /* HERO */
+    .hero{padding:120px 6% 60px;display:grid;grid-template-columns:1fr 460px;gap:40px;align-items:center}
+    .hero-left h2{font-size:40px;margin-bottom:12px;line-height:1.03;color:#123626}
+    .hero-left p{color:var(--muted);margin-bottom:18px}
+    .hero-actions{display:flex;gap:12px;align-items:center}
+    .btn{padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#2a7a4b);color:white}
+    .btn-ghost{background:transparent;border:2px solid rgba(0,0,0,0.06);color:var(--muted)}
 
-    /* ==== HERO ==== */
-    .hero {
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center;
-      background: url("https://images.unsplash.com/photo-1507149833265-60c372daea22?auto=format&fit=crop&w=1200&q=80") no-repeat center/cover;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-    }
-    .hero > * { position: relative; z-index: 2; }
-    .hero h2 {
-      font-size: 56px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      animation: fadeDown 1.2s ease;
-      background: linear-gradient(90deg, #c5e384, #f9d976, #f39f86);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 20px;
-      max-width: 700px;
-      margin-bottom: 35px;
-      animation: fadeUp 1.4s ease;
-      color: #eee;
-    }
+    .hero-right{background:linear-gradient(180deg,rgba(47,111,78,0.06),transparent);padding:18px;border-radius:16px}
+    .hero-preview{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .hero-preview img{width:100%;height:120px;object-fit:cover;border-radius:10px;box-shadow:var(--shadow)}
 
-    /* ==== BUTTON ==== */
-    .btn {
-      display: inline-block;
-      padding: 14px 34px;
-      border-radius: 50px;
-      background: linear-gradient(45deg,#f9d976,#f39f86,#c5e384);
-      color: #000;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 6px 20px rgba(249,217,118,0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .btn:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(249,217,118,0.6);
-    }
+    /* FILTERS */
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:10px 6% 24px}
+    .filter{padding:8px 12px;background:#fff;border-radius:999px;border:1px solid rgba(0,0,0,0.04);cursor:pointer;font-weight:600;color:var(--muted)}
+    .filter.active{background:linear-gradient(90deg,var(--accent),#3c7a56);color:white}
 
-    /* ==== ABOUT ==== */
-    .about {
-      text-align: center;
-    }
-    .about h2 {
-      font-size: 38px;
-      margin-bottom: 20px;
-      color: #f9d976;
-    }
-    .about p {
-      max-width: 750px; margin: auto;
-      font-size: 18px; line-height: 1.7;
-      color: #ddd;
-    }
+    /* GRID */
+    .gallery{padding:0 6% 80px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+    .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .card img{width:100%;height:220px;object-fit:cover;border-radius:10px}
+    .meta{display:flex;justify-content:space-between;align-items:center;padding-top:10px}
+    .title{font-weight:700;color:#123626}
+    .price{font-weight:800;color:var(--accent)}
 
-    /* ==== GALLERY ==== */
-    .gallery h2 { font-size: 38px; color: #f9d976; text-align: center; margin-bottom: 40px; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-    .gallery-grid img {
-      width: 100%; border-radius: 16px;
-      transition: transform 0.4s, box-shadow 0.4s;
-      cursor: pointer;
-    }
-    .gallery-grid img:hover {
-      transform: scale(1.07);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-    }
+    .card .overlay{position:absolute;inset:8px;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;opacity:0;transition:all .28s}
+    .card:hover .overlay{opacity:1;background:linear-gradient(180deg,rgba(0,0,0,0.0),rgba(0,0,0,0.35));backdrop-filter:blur(2px)}
+    .overlay .quick{display:flex;gap:8px}
+    .quick button{padding:8px 10px;border-radius:10px;border:none;background:rgba(255,255,255,0.95);cursor:pointer;font-weight:700}
 
-    /* ==== SHOP ==== */
-    .shop h2 { font-size: 38px; color: #f9d976; text-align: center; margin-bottom: 40px; }
-    .shop-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    .product {
-      background: rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 25px;
-      backdrop-filter: blur(10px);
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
-    }
-    .product:hover { transform: translateY(-6px); }
-    .product img { width: 100%; border-radius: 16px; margin-bottom: 15px; }
-    .product h3 { margin-bottom: 8px; font-size: 22px; color: #f9d976; }
-    .product p { margin-bottom: 12px; font-size: 16px; color: #ccc; }
+    /* SIDEBAR CART */
+    .cart-btn{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,var(--accent-2),#f7c97e);border-radius:999px;padding:14px 18px;color:#111;font-weight:800;box-shadow:0 18px 40px rgba(243,156,87,0.18);z-index:70;cursor:pointer}
+    .cart-panel{position:fixed;right:20px;top:90px;width:360px;background:var(--card);border-radius:12px;padding:18px;box-shadow:var(--shadow);z-index:70;display:flex;flex-direction:column;gap:12px}
+    .cart-item{display:flex;gap:10px;align-items:center}
+    .cart-item img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+    .muted{color:var(--muted)}
 
-    /* ==== CONTACT ==== */
-    .contact {
-      text-align: center;
-    }
-    .contact h2 { font-size: 38px; margin-bottom: 20px; color: #f9d976; }
-    .contact p { font-size: 18px; margin-bottom: 25px; color: #ddd; }
+    /* MODALS */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(12,12,12,0.4);display:none;place-items:center;z-index:90}
+    .modal{background:var(--card);padding:18px;border-radius:12px;max-width:980px;width:96%;box-shadow:var(--shadow)}
+    .modal-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .modal img{width:100%;height:420px;object-fit:cover;border-radius:10px}
+    .options{display:flex;flex-direction:column;gap:10px}
+    .select, .input{padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)}
 
-    /* ==== FOOTER ==== */
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: rgba(0,0,0,0.85);
-      font-size: 14px;
-      color: #aaa;
-    }
+    /* UPLOAD AREA */
+    .uploader{display:flex;gap:12px;align-items:center;padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(47,111,78,0.04),transparent);border:1px dashed rgba(0,0,0,0.06)}
+    .uploader input{display:none}
 
-    /* ==== ANIMATIONS ==== */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* FOOTER */
+    footer{padding:50px 6%;color:var(--muted)}
+
+    /* small screens */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:18px;padding-top:100px}
+      .modal-grid{grid-template-columns:1fr}
+      .hero-right{order:-1}
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Wild Prints</h1>
-    <nav>
-      <a href="#hero">Home</a>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#shop">Shop</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="hero" class="hero">
-    <h2>Bring Nature & Pets Into Your Space</h2>
-    <p>Explore premium wildlife and pet photography — transformed into prints, wall art, and collectibles. From playful pets to majestic wild creatures, each print is crafted to make your walls come alive.</p>
-    <a href="#shop" class="btn">Explore Shop</a>
-  </section>
-
-  <section id="about" class="about">
-    <h2>About</h2>
-    <p>I’m Sreerag — a wildlife & pet photographer capturing soulful animal portraits and natural moments. My mission is to turn these stories into beautiful wall art, from high-quality prints to Displate-style collectibles. Perfect for pet lovers, nature enthusiasts, and anyone who wants their walls to tell a story.</p>
-  </section>
-
-  <section id="gallery" class="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <img src="https://picsum.photos/500/350?random=21" alt="Wildlife">
-      <img src="https://picsum.photos/500/350?random=22" alt="Pets">
-      <img src="https://picsum.photos/500/350?random=23" alt="Pet Portrait">
-      <img src="https://picsum.photos/500/350?random=24" alt="Wildlife Print">
+<header>
+  <div class="brand">
+    <div class="logo">WP</div>
+    <div>
+      <h1>WildPrints</h1>
+      <div style="font-size:12px;color:var(--muted)">Fine wildlife & pet prints</div>
     </div>
-  </section>
+  </div>
+  <nav>
+    <a href="#gallery">Shop</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a class="cta" id="uploadBtn">Upload Photo</a>
+  </nav>
+</header>
 
-  <section id="shop" class="shop">
-    <h2>Shop</h2>
-    <div class="shop-items">
-      <div class="product">
-        <img src="https://picsum.photos/600/400?random=25" alt="Pet Print">
-        <h3>Custom Pet Portrait Print</h3>
-        <p>A personalized, high-quality print of your beloved pet. Available in multiple sizes and finishes.</p>
-        <p><strong>From ₹799</strong></p>
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20a%20Custom%20Pet%20Portrait" class="btn">Order via WhatsApp</a>
-      </div>
-      <div class="product">
-        <img src="https://picsum.photos/600/400?random=26" alt="Wildlife Print">
-        <h3>Wildlife Wall Art</h3>
-        <p>Bold, high-resolution wildlife photography printed on premium materials — perfect for home or office walls.</p>
-        <p><strong>From ₹999</strong></p>
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20Wildlife%20Wall%20Art" class="btn">Order via WhatsApp</a>
-      </div>
-      <div class="product">
-        <img src="https://picsum.photos/600/400?random=27" alt="Displate Style Print">
-        <h3>Metal Displate-Style Print</h3>
-        <p>Premium metal wall print with magnetic mounting. A modern, durable way to showcase wildlife & pet art.</p>
-        <p><strong>From ₹1499</strong></p>
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20a%20Metal%20Displate%20Style%20Print" class="btn">Order via WhatsApp</a>
-      </div>
+<section class="hero">
+  <div class="hero-left">
+    <h2>Bring pets & wildlife to your walls — premium prints, made with care.</h2>
+    <p>Shop framed prints, museum-grade canvas, and metal (Displate-style) prints. Order custom pet portraits — upload a photo and we’ll turn it into wall-ready art.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#gallery">Shop Prints</a>
+      <a class="btn btn-ghost" id="previewRoomBtn">Room Preview</a>
     </div>
-  </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Want to commission a custom pet portrait, bulk orders, or have a special request? Reach out directly on WhatsApp.</p>
-    <a href="https://wa.me/91XXXXXXXXXX" class="btn">Chat on WhatsApp</a>
-  </section>
+    <div style="margin-top:18px;color:var(--muted);font-size:14px">Tip: Click any photo for quick view, choose size & material, then add to cart. Cart is saved in your browser and ready for WhatsApp checkout.</div>
+  </div>
 
-  <footer>
-    <p>© 2025 Wild Prints | Photography & Prints by Sreerag</p>
-  </footer>
+  <aside class="hero-right">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <strong style="color:#123626">Featured Collections</strong>
+      <small class="muted">Curated by Sreerag</small>
+    </div>
+    <div class="hero-preview" id="featured">
+      <!-- replace with your own images or keep placeholders -->
+      <img src="https://picsum.photos/600/400?random=31" alt="feat1">
+      <img src="https://picsum.photos/600/400?random=32" alt="feat2">
+      <img src="https://picsum.photos/600/400?random=33" alt="feat3">
+      <img src="https://picsum.photos/600/400?random=34" alt="feat4">
+    </div>
+  </aside>
+</section>
+
+<!-- FILTERS -->
+<div class="filters" role="toolbar" aria-label="gallery filters">
+  <button class="filter active" data-filter="all">All</button>
+  <button class="filter" data-filter="pets">Pets</button>
+  <button class="filter" data-filter="wildlife">Wildlife</button>
+  <button class="filter" data-filter="portraits">Portraits</button>
+  <button class="filter" data-filter="metal">Metal Prints</button>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery">
+  <div class="grid" id="grid">
+    <!-- Cards injected by JS. Replace "items" array below with your real photos and metadata. -->
+  </div>
+</section>
+
+<!-- CART BUTTON & PANEL -->
+<button class="cart-btn" id="cartBtn">Cart (<span id="cartCount">0</span>)</button>
+<div id="cartPanel" class="cart-panel" style="display:none">
+  <strong>Cart</strong>
+  <div id="cartItems" style="display:flex;flex-direction:column;gap:10px;max-height:360px;overflow:auto"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+    <div><small class="muted">Total:</small><div id="cartTotal" style="font-weight:800;color:var(--accent)">₹0</div></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-ghost" id="clearCart">Clear</button>
+      <button class="btn btn-primary" id="checkoutBtn">Checkout via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK VIEW / PRODUCT MODAL -->
+<div id="modalBackdrop" class="modal-backdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="productTitle">
+    <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:10px">
+      <strong id="productTitle">Product</strong>
+      <button id="closeModal" style="border:none;background:transparent;font-weight:800;cursor:pointer">✕</button>
+    </div>
+    <div class="modal-grid">
+      <div>
+        <img id="modalImg" src="" alt="product">
+      </div>
+      <aside>
+        <div style="display:flex;justify-content:space-between;align-items:center"><div id="modalCategory" class="muted">Category</div><div id="modalPrice" style="font-weight:900;color:var(--accent)">₹0</div></div>
+        <div style="margin-top:12px" id="modalDesc">Description</div>
+
+        <div style="margin-top:16px" class="options">
+          <label>Size</label>
+          <select id="sizeSelect" class="select">
+            <option value="small" data-mult="1">Small — 8x10"</option>
+            <option value="medium" data-mult="1.6">Medium — 16x20"</option>
+            <option value="large" data-mult="2.6">Large — 24x36"</option>
+          </select>
+
+          <label>Material</label>
+          <select id="matSelect" class="select">
+            <option value="paper" data-add="0">Mat Paper (Affordable)</option>
+            <option value="canvas" data-add="400">Canvas (Gallery wrap)</option>
+            <option value="metal" data-add="900">Metal / Displate-style</option>
+          </select>
+
+          <label>Quantity</label>
+          <input id="qty" class="input" type="number" min="1" value="1">
+
+          <button id="addToCart" class="btn btn-primary">Add to cart</button>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD MODAL -->
+<div id="uploadModal" class="modal-backdrop">
+  <div class="modal" style="max-width:720px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <strong>Upload Your Pet Photo</strong>
+      <button id="closeUpload" style="border:none;background:transparent;font-weight:800;cursor:pointer">✕</button>
+    </div>
+    <div class="uploader">
+      <label style="cursor:pointer;padding:10px 14px;background:linear-gradient(90deg,var(--accent),#2a7a4b);color:#fff;border-radius:10px;font-weight:800">Choose File
+        <input type="file" id="fileInput" accept="image/*">
+      </label>
+      <div style="flex:1">
+        <div style="font-weight:700">Upload for a custom pet portrait</div>
+        <div style="color:var(--muted);font-size:13px">We will contact you for details and provide a mockup. Files are stored locally in your browser until you submit an order.</div>
+      </div>
+      <button class="btn btn-primary" id="uploadProceed">Proceed</button>
+    </div>
+
+    <div id="uploadPreview" style="margin-top:12px;display:flex;gap:10px;align-items:center"></div>
+  </div>
+</div>
+
+<section id="about" style="padding:40px 6% 40px">
+  <h3>About — Sreerag</h3>
+  <p style="color:var(--muted);max-width:720px">I capture honest moments of wildlife and domestic companions. Each print is edited and prepared for high-quality printing. For commissioned pet portraits, upload a photo and we’ll create a gallery-quality print tailored to your preferences. Prints are produced on-demand; international shipping available.</p>
+</section>
+
+<section id="contact" style="padding:40px 6% 140px">
+  <h3>Contact & Orders</h3>
+  <p style="color:var(--muted);max-width:720px">For bulk orders, collaborations, or questions: message via WhatsApp. Use the checkout button to send cart details directly to WhatsApp. To enable online payments later, connect Stripe or Razorpay (server required).</p>
+  <div style="margin-top:12px"><a class="btn btn-primary" href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20have%20a%20question%20about%20WildPrints">Message on WhatsApp</a></div>
+</section>
+
+<footer>
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div>
+      <div style="font-weight:800">WildPrints</div>
+      <div style="color:var(--muted);font-size:13px">© 2025 WildPrints — Photography & Prints by Sreerag</div>
+    </div>
+    <div style="color:var(--muted);font-size:14px">Made for GitHub Pages — just drop this file into a repo and enable Pages.</div>
+  </div>
+</footer>
+
+<script>
+// ---------------------------
+// SAMPLE DATA (replace with your data)
+// ---------------------------
+const items = [
+  {id:1,title:'Golden Paws — Labrador',category:'pets',price:799,src:'https://picsum.photos/800/600?random=51',desc:'Warm pet portrait captured in natural light.'},
+  {id:2,title:'Forest Stare — Deer',category:'wildlife',price:999,src:'https://picsum.photos/800/600?random=52',desc:'Majestic deer captured at dawn.'},
+  {id:3,title:'Curious Cat',category:'pets',price:699,src:'https://picsum.photos/800/600?random=53',desc:'Close-up portrait of a curious cat.'},
+  {id:4,title:'King of Savannah',category:'wildlife',price:1499,src:'https://picsum.photos/800/600?random=54',desc:'Powerful wildlife print on metal.'},
+  {id:5,title:'Portrait — Beagle',category:'portraits',price:799,src:'https://picsum.photos/800/600?random=55',desc:'Studio-style pet portrait for home.'},
+  {id:6,title:'Metal Series — Eagle',category:'metal',price:1699,src:'https://picsum.photos/800/600?random=56',desc:'Displate-style metal print, high contrast.'}
+];
+
+// ---------------------------
+// State & Utilities
+// ---------------------------
+let state = {filter:'all',cart:[]};
+const grid = document.getElementById('grid');
+const filters = document.querySelectorAll('.filter');
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalImg = document.getElementById('modalImg');
+const productTitle = document.getElementById('productTitle');
+const modalPrice = document.getElementById('modalPrice');
+const modalDesc = document.getElementById('modalDesc');
+const modalCategory = document.getElementById('modalCategory');
+const sizeSelect = document.getElementById('sizeSelect');
+const matSelect = document.getElementById('matSelect');
+const qtyInput = document.getElementById('qty');
+const addToCartBtn = document.getElementById('addToCart');
+let activeProduct = null;
+
+// Load cart from localStorage
+function loadCart(){
+  try{state.cart = JSON.parse(localStorage.getItem('wp_cart'))||[];}catch(e){state.cart=[]}
+  updateCartUI();
+}
+function saveCart(){localStorage.setItem('wp_cart',JSON.stringify(state.cart));}
+
+// Render grid
+function renderGrid(){
+  grid.innerHTML='';
+  const filtered = items.filter(it=> state.filter==='all' ? true: it.category===state.filter);
+  for(const it of filtered){
+    const card = document.createElement('div'); card.className='card';
+    card.innerHTML = `
+      <img src="${it.src}" alt="${it.title}">
+      <div class="overlay">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:800;color:white">${it.title}</div>
+          <div style="font-weight:900;color:var(--accent)">₹${it.price}</div>
+        </div>
+        <div class="quick">
+          <button data-id="${it.id}" class="quick-view">Quick View</button>
+          <button data-id="${it.id}" class="add-quick">Add</button>
+        </div>
+      </div>
+      <div class="meta"><div class="title">${it.title}</div><div class="price">₹${it.price}</div></div>
+    `;
+    grid.appendChild(card);
+  }
+  attachCardListeners();
+}
+
+// Filters
+filters.forEach(f=>f.addEventListener('click',e=>{
+  filters.forEach(x=>x.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  state.filter = e.currentTarget.dataset.filter;
+  renderGrid();
+}));
+
+// Card listeners
+function attachCardListeners(){
+  document.querySelectorAll('.quick-view').forEach(b=>b.addEventListener('click',openQuickView));
+  document.querySelectorAll('.add-quick').forEach(b=>b.addEventListener('click',e=>{
+    const id = Number(e.currentTarget.dataset.id); const item = items.find(i=>i.id===id);
+    addToCart({id:item.id,title:item.title,src:item.src,price:item.price,qty:1,size:'small',material:'paper'});
+  }));
+}
+
+// Quick view modal
+function openQuickView(e){
+  const id = Number(e.currentTarget.dataset.id); const item = items.find(i=>i.id===id);
+  activeProduct = item;
+  modalImg.src = item.src; productTitle.textContent = item.title; modalPrice.textContent = '₹'+item.price; modalDesc.textContent = item.desc; modalCategory.textContent = item.category;
+  sizeSelect.value='small'; matSelect.value='paper'; qtyInput.value=1;
+  modalBackdrop.style.display='grid';
+}
+
+document.getElementById('closeModal').addEventListener('click',()=>modalBackdrop.style.display='none');
+modalBackdrop.addEventListener('click',e=>{ if(e.target===modalBackdrop) modalBackdrop.style.display='none'; });
+
+// Add to cart
+addToCartBtn.addEventListener('click',()=>{
+  if(!activeProduct) return;
+  const qty = Number(qtyInput.value)||1;
+  const size = sizeSelect.value; const material = matSelect.value;
+  const base = activeProduct.price; const sizeMult = Number(sizeSelect.selectedOptions[0].dataset.mult||1); const matAdd = Number(matSelect.selectedOptions[0].dataset.add||0);
+  const finalPrice = Math.round((base * sizeMult) + matAdd);
+  addToCart({id:activeProduct.id,title:activeProduct.title,src:activeProduct.src,price:finalPrice,qty,size,material});
+  modalBackdrop.style.display='none';
+});
+
+// Cart functions
+function addToCart(item){
+  const existing = state.cart.find(i=>i.id===item.id && i.size===item.size && i.material===item.material);
+  if(existing){existing.qty += item.qty;} else state.cart.push(item);
+  saveCart(); updateCartUI();
+}
+function updateCartUI(){
+  document.getElementById('cartCount').textContent = state.cart.reduce((s,i)=>s+i.qty,0);
+  const container = document.getElementById('cartItems'); container.innerHTML='';
+  let total=0;
+  for(const it of state.cart){
+    total += it.price * it.qty;
+    const div = document.createElement('div'); div.className='cart-item';
+    div.innerHTML = `<img src="${it.src}" alt="${it.title}"><div style="flex:1"><div style="font-weight:800">${it.title}</div><div style="font-size:13px;color:var(--muted)">${it.size} • ${it.material}</div></div><div style="text-align:right"><div>₹${it.price}</div><div style="font-size:13px;color:var(--muted)">x${it.qty}</div><button data-id="${it.id}" class="removeItem" style="margin-top:6px;border:none;background:transparent;color:var(--muted);cursor:pointer">remove</button></div>`;
+    container.appendChild(div);
+  }
+  document.getElementById('cartTotal').textContent = '₹'+total;
+  document.querySelectorAll('.removeItem').forEach(b=>b.addEventListener('click',e=>{
+    const id = Number(e.currentTarget.dataset.id);
+    state.cart = state.cart.filter(x=>!(x.id===id && x.size && x.material)); saveCart(); updateCartUI();
+  }));
+}
+
+// Cart button
+const cartBtn = document.getElementById('cartBtn'); const cartPanel = document.getElementById('cartPanel');
+cartBtn.addEventListener('click',()=>{cartPanel.style.display = cartPanel.style.display==='none'?'flex':'none';});
+document.getElementById('clearCart').addEventListener('click',()=>{state.cart=[];saveCart();updateCartUI();});
+
+// Checkout via WhatsApp
+document.getElementById('checkoutBtn').addEventListener('click',()=>{
+  if(state.cart.length===0){alert('Cart is empty');return}
+  const phone = '91XXXXXXXXXX'; // replace your number
+  const lines = state.cart.map(i=>`${i.title} | ${i.size} | ${i.material} x${i.qty} — ₹${i.price*i.qty}`);
+  const total = state.cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const text = encodeURIComponent(`Hello, I would like to order:\n${lines.join('\n')}\nTotal: ₹${total}\nOrder for: [Name] | [Address]`);
+  const url = `https://wa.me/${phone}?text=${text}`;
+  window.open(url,'_blank');
+});
+
+// Upload flow
+const uploadBtn = document.getElementById('uploadBtn'); const uploadModal = document.getElementById('uploadModal');
+uploadBtn.addEventListener('click',()=>uploadModal.style.display='grid'); document.getElementById('closeUpload').addEventListener('click',()=>uploadModal.style.display='none');
+const fileInput = document.getElementById('fileInput'); const uploadPreview = document.getElementById('uploadPreview');
+fileInput.addEventListener('change',e=>{
+  uploadPreview.innerHTML=''; const f = e.target.files[0]; if(!f) return;
+  const url = URL.createObjectURL(f);
+  const img = document.createElement('img'); img.src=url; img.style.width='120px'; img.style.height='120px'; img.style.objectFit='cover'; img.style.borderRadius='8px';
+  uploadPreview.appendChild(img);
+});
+
+// proceed upload: we store file info in localStorage as a simple queue for you to contact later
+document.getElementById('uploadProceed').addEventListener('click',()=>{
+  const f = fileInput.files[0]; if(!f){alert('Please choose an image');return}
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    const storage = JSON.parse(localStorage.getItem('wp_uploads')||'[]');
+    storage.push({name:f.name,data:ev.target.result,ts:Date.now()});
+    localStorage.setItem('wp_uploads',JSON.stringify(storage));
+    alert('Image saved locally. We will contact you after you send an order.');
+    uploadModal.style.display='none'; fileInput.value=''; uploadPreview.innerHTML='';
+  };
+  reader.readAsDataURL(f);
+});
+
+// Simple Room Preview: opens first featured image over a wall mockup
+const previewRoomBtn = document.getElementById('previewRoomBtn');
+previewRoomBtn.addEventListener('click',()=>{
+  const backdrop = document.createElement('div'); backdrop.style.position='fixed';backdrop.style.inset=0;backdrop.style.background='rgba(0,0,0,0.6)';backdrop.style.display='grid';backdrop.style.placeItems='center';backdrop.style.zIndex=120;
+  const modal = document.createElement('div'); modal.style.width='90%'; modal.style.maxWidth='1100px'; modal.style.height='70vh'; modal.style.borderRadius='12px'; modal.style.overflow='hidden'; modal.style.background='linear-gradient(180deg,#fff,#f3efe6)'; modal.style.display='flex';
+  modal.innerHTML = `<div style="flex:1;display:flex;align-items:center;justify-content:center;background-image:url('https://images.unsplash.com/photo-1505692794401-5b2c1b57f2ae?auto=format&fit=crop&w=1200&q=80');background-size:cover;background-position:center"></div><div style="width:420px;padding:24px;display:flex;flex-direction:column;gap:12px"><div style="font-weight:900">Room Preview</div><div style="color:var(--muted)">Drag the artwork to reposition. Use size dropdown to mock scale.</div><div id="rpControls" style="margin-top:6px"></div><div style="flex:1;display:flex;align-items:center;justify-content:center"><img id="rpArt" src="${items[0].src}" style="width:260px;height:260px;object-fit:cover;border-radius:8px;box-shadow:var(--shadow);cursor:grab"></div><div style="display:flex;gap:8px"><button class='btn btn-ghost' id='rpClose'>Close</button><button class='btn btn-primary' id='rpAdd'>Add to Cart</button></div></div>`;
+  backdrop.appendChild(modal); document.body.appendChild(backdrop);
+  document.getElementById('rpClose').addEventListener('click',()=>backdrop.remove());
+  document.getElementById('rpAdd').addEventListener('click',()=>{addToCart({id:items[0].id,title:items[0].title,src:items[0].src,price:items[0].price,qty:1,size:'medium',material:'canvas'});backdrop.remove();});
+  // simple drag
+  const art = document.getElementById('rpArt'); let isDown=false, startX, startY, origX=0, origY=0;
+  art.addEventListener('mousedown',e=>{isDown=true;startX=e.clientX;startY=e.clientY;art.style.cursor='grabbing'});
+  window.addEventListener('mouseup',()=>{isDown=false;art.style.cursor='grab'});
+  window.addEventListener('mousemove',e=>{if(!isDown) return; const dx=e.clientX-startX; const dy=e.clientY-startY; art.style.transform=`translate(${origX+dx}px,${origY+dy}px)`});
+});
+
+// Initial render
+renderGrid(); loadCart();
+
+// ---------------------------
+// Deployment NOTE:
+// - Save this file as `index.html` in the root of a new GitHub repo.
+// - Push to GitHub and enable GitHub Pages from the repo Settings (use branch `main` / root).
+// - Add your real images by replacing `items` array `src` values with paths (e.g. `images/pet1.jpg`) and commit / push the `images/` folder.
+// - To accept online payments later you'll need a server or a static + third-party checkout (e.g. Snipcart, Shopify Buy SDK, Gumroad).
+// ---------------------------
+</script>
 
 </body>
 </html>
