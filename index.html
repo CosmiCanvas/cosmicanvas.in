@@ -4,116 +4,182 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Festival Frames</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
+
+    /* ==== HEADER ==== */
     header {
       position: fixed;
       top: 0; left: 0; width: 100%;
-      background: rgba(0,0,0,0.6);
-      padding: 15px 40px;
+      padding: 18px 50px;
       display: flex; justify-content: space-between; align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       z-index: 1000;
     }
-    header h1 { font-size: 24px; font-weight: 800; color: #ffcc70; }
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ffcc70; }
-
-    section {
-      min-height: 100vh;
-      padding: 100px 10% 60px;
-    }
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .hero h2 {
-      font-size: 52px;
-      background: linear-gradient(45deg, #ffcc70, #ff8177);
+    header h1 {
+      font-size: 26px;
+      font-weight: 900;
+      background: linear-gradient(45deg,#ffcc70,#ff8177,#ff4b1f);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #eee;
+      position: relative;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffcc70;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -6px; left: 0;
+      width: 0%; height: 2px;
+      background: #ffcc70;
+      transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* ==== SECTIONS ==== */
+    section {
+      min-height: 100vh;
+      padding: 120px 10% 60px;
+      position: relative;
+    }
+
+    /* ==== HERO ==== */
+    .hero {
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      background: url("https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1200&q=80") no-repeat center/cover;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero > * { position: relative; z-index: 2; }
+    .hero h2 {
+      font-size: 58px;
+      line-height: 1.2;
       margin-bottom: 20px;
-      animation: fadeInDown 1.2s ease;
+      animation: fadeDown 1.2s ease;
+      background: linear-gradient(90deg, #ffcc70, #ff8177, #ff4b1f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 18px;
+      font-size: 20px;
       max-width: 700px;
-      margin-bottom: 30px;
-      animation: fadeInUp 1.2s ease;
+      margin-bottom: 35px;
+      animation: fadeUp 1.4s ease;
+      color: #eee;
     }
-    .btn {
-      padding: 12px 28px;
-      border-radius: 30px;
-      background: linear-gradient(45deg, #ff8177, #ffcc70);
-      color: #000;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-    .btn:hover { transform: scale(1.05); }
 
-    .about, .gallery, .shop, .contact { text-align: center; }
-    .about h2, .gallery h2, .shop h2, .contact h2 {
-      font-size: 36px;
+    /* ==== BUTTON ==== */
+    .btn {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 50px;
+      background: linear-gradient(45deg,#ff8177,#ffcc70,#ff4b1f);
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255,128,80,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(255,128,80,0.7);
+    }
+
+    /* ==== ABOUT ==== */
+    .about {
+      text-align: center;
+    }
+    .about h2 {
+      font-size: 38px;
       margin-bottom: 20px;
       color: #ffcc70;
     }
-    .about p { max-width: 700px; margin: auto; font-size: 18px; line-height: 1.6; }
+    .about p {
+      max-width: 750px; margin: auto;
+      font-size: 18px; line-height: 1.7;
+      color: #ddd;
+    }
 
+    /* ==== GALLERY ==== */
+    .gallery h2 { font-size: 38px; color: #ffcc70; text-align: center; margin-bottom: 40px; }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
     }
     .gallery-grid img {
-      width: 100%;
-      border-radius: 12px;
+      width: 100%; border-radius: 16px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+
+    /* ==== SHOP ==== */
+    .shop h2 { font-size: 38px; color: #ffcc70; text-align: center; margin-bottom: 40px; }
+    .product {
+      max-width: 600px; margin: auto;
+      background: rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      text-align: center;
       transition: transform 0.3s;
     }
-    .gallery-grid img:hover { transform: scale(1.05); }
+    .product:hover { transform: translateY(-8px); }
+    .product img { width: 100%; border-radius: 16px; margin-bottom: 20px; }
+    .product h3 { margin-bottom: 10px; font-size: 24px; color: #ffcc70; }
+    .product p { margin-bottom: 15px; font-size: 17px; color: #ccc; }
 
-    .product {
-      margin: 40px auto;
-      max-width: 500px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    /* ==== CONTACT ==== */
+    .contact {
+      text-align: center;
     }
-    .product img { width: 100%; border-radius: 12px; margin-bottom: 20px; }
-    .product h3 { margin-bottom: 10px; }
-    .product p { margin-bottom: 15px; }
+    .contact h2 { font-size: 38px; margin-bottom: 20px; color: #ffcc70; }
+    .contact p { font-size: 18px; margin-bottom: 25px; color: #ddd; }
 
-    .contact p { margin-bottom: 20px; font-size: 18px; }
-
+    /* ==== FOOTER ==== */
     footer {
       text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.8);
+      padding: 25px;
+      background: rgba(0,0,0,0.85);
+      font-size: 14px;
+      color: #aaa;
     }
-    footer p { font-size: 14px; color: #aaa; }
 
-    @keyframes fadeInDown {
+    /* ==== ANIMATIONS ==== */
+    @keyframes fadeDown {
       from { opacity: 0; transform: translateY(-40px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeInUp {
+    @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
@@ -134,44 +200,44 @@
 
   <section id="hero" class="hero">
     <h2>Capture the Spirit of Festivals</h2>
-    <p>Explore vibrant Theyyam and Kerala festival photography — each frame tells a story of tradition, culture, and energy. Download exclusive wallpapers and photo packs directly from here.</p>
+    <p>Experience Kerala’s Theyyam and vibrant festivals through immersive photography — every frame a celebration of tradition and soul. Download wallpapers & photo packs crafted for you.</p>
     <a href="#shop" class="btn">Explore Shop</a>
   </section>
 
   <section id="about" class="about">
     <h2>About</h2>
-    <p>Hi, I’m Sreerag — a passionate photographer capturing festivals, traditions, and cultural moments in Kerala and beyond. My goal is to make these moments accessible to everyone through beautiful wallpapers, prints, and digital packs.</p>
+    <p>I’m Sreerag — a festival and culture photographer from Kerala. My mission is to freeze the beauty of traditions and share them with the world. From colorful Theyyam rituals to temple festivals, my collection lets you relive the energy and stories of Kerala.</p>
   </section>
 
   <section id="gallery" class="gallery">
     <h2>Gallery</h2>
     <div class="gallery-grid">
-      <img src="https://picsum.photos/400/300?random=1" alt="Gallery">
-      <img src="https://picsum.photos/400/300?random=2" alt="Gallery">
-      <img src="https://picsum.photos/400/300?random=3" alt="Gallery">
-      <img src="https://picsum.photos/400/300?random=4" alt="Gallery">
+      <img src="https://picsum.photos/500/350?random=11" alt="Gallery">
+      <img src="https://picsum.photos/500/350?random=12" alt="Gallery">
+      <img src="https://picsum.photos/500/350?random=13" alt="Gallery">
+      <img src="https://picsum.photos/500/350?random=14" alt="Gallery">
     </div>
   </section>
 
   <section id="shop" class="shop">
     <h2>Shop</h2>
     <div class="product">
-      <img src="https://picsum.photos/500/300?random=5" alt="Festival Pack">
+      <img src="https://picsum.photos/600/350?random=15" alt="Festival Pack">
       <h3>Festival Wallpapers Pack</h3>
-      <p>10 exclusive high-resolution festival wallpapers — perfect for your phone or desktop.</p>
+      <p>10 exclusive high-resolution festival wallpapers — crafted for phone & desktop.</p>
       <p><strong>Price: ₹199</strong></p>
-      <a href="https://wa.me/918970822595?text=Hi!%20I%20want%20to%20order%20the%20Festival%20Wallpapers%20Pack" class="btn">Order via WhatsApp</a>
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20order%20the%20Festival%20Wallpapers%20Pack" class="btn">Order via WhatsApp</a>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>Have questions, custom requests, or bulk orders? Reach me directly on WhatsApp.</p>
+    <p>Custom requests, collaborations, or bulk orders? Let’s connect!</p>
     <a href="https://wa.me/91XXXXXXXXXX" class="btn">Chat on WhatsApp</a>
   </section>
 
   <footer>
-    <p>© 2025 Festival Frames | Captured & curated by Sreerag</p>
+    <p>© 2025 Festival Frames | Crafted with ❤️ by Sreerag</p>
   </footer>
 
 </body>
