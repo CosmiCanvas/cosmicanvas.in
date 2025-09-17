@@ -1,169 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cosmic Canvas Photography</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #121212;
-      color: #eee;
-      overflow-x: hidden;
-    }
-    header {
-      background: linear-gradient(90deg, #141e30, #243b55);
-      padding: 2rem 3rem;
-      text-align: center;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.7);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    header h1 {
-      margin: 0;
-      font-weight: 600;
-      letter-spacing: 5px;
-      font-size: 2.8rem;
-      color: #ff3e78;
-      text-shadow: 0 0 15px #ff3e78;
-    }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: #eee;
-      margin: 0 2rem;
-      font-weight: 300;
-      font-size: 1.2rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    nav a::after {
-      content: '';
-      display: block;
-      height: 2px;
-      background: #ff3e78;
-      width: 0;
-      transition: width 0.3s ease;
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      border-radius: 2px;
-    }
-    nav a:hover {
-      color: #ff3e78;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-    section {
-      margin-bottom: 4rem;
-      line-height: 1.7;
-      border-radius: 12px;
-      padding: 2rem;
-      background: #222238;
-      box-shadow: 0 10px 30px rgba(255, 62, 120, 0.15);
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
-    }
-    section:nth-child(odd) {
-      animation-delay: 0.4s;
-    }
-    section:nth-child(even) {
-      animation-delay: 0.8s;
-    }
-    h2 {
-      font-weight: 600;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      color: #ff3e78;
-      border-bottom: 3px solid #ff3e78;
-      display: inline-block;
-      padding-bottom: 0.25rem;
-    }
-    p.story {
-      max-height: 150px;
-      overflow-y: auto;
-      border-left: 4px solid #ff3e78;
-      padding-left: 1rem;
-      font-size: 1.1rem;
-      font-weight: 300;
-      background: #1a1a2f;
-      margin-top: 1rem;
-      white-space: pre-wrap;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.7rem;
-      margin-top: 2rem;
-    }
-    .gallery-item {
-      background: #1a1a2f;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px #ff3e7833;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 300;
-      color: #888;
-      letter-spacing: 1.5px;
-      font-size: 1rem;
-      text-transform: uppercase;
-      user-select: none;
-    }
-    .gallery-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 30px #ff3e78aa;
-      color: #ff3e78;
-      font-weight: 600;
-    }
-    .price-tag {
-      position: absolute;
-      bottom: 10px;
-      right: 15px;
-      background: #ff3e78cc;
-      color: #fff;
-      padding: 0.3rem 1rem;
-      font-weight: 600;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      box-shadow: 0 4px 8px #ff3e78bb;
-      cursor: default;
-    }
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(90deg, #141e30, #243b55);
-      color: #ff3e78aa;
-      letter-spacing: 4px;
-      font-weight: 600;
-      font-size: 1.4rem;
-      text-shadow: 0 0 8px #ff3e78aa;
-    }
-    /* Animations */
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cosmic Canvas Photography</title>
+<style>
+  body {
+    margin: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f9fc;
+    color: #111;
+    line-height: 1.6;
+  }
+  header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    padding: 1rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 0.15em;
+    color: #0070f3;
+    margin: 0;
+  }
+  nav a {
+    color: #555;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #0070f3;
+  }
+  main {
+    max-width: 1200px;
+    margin: 3rem auto 5rem;
+    padding: 0 2rem;
+  }
+  section {
+    margin-bottom: 5rem;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #eaeaea;
+    padding-bottom: 0.25rem;
+    color: #222;
+  }
+  .intro-text {
+    max-width: 700px;
+    font-size: 1.1rem;
+    color: #444;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  .gallery-item {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.09);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .gallery-image {
+    background: #ddd;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: #666;
+    font-size: 1.25rem;
+    user-select: none;
+  }
+  .gallery-caption {
+    padding: 1rem 1.5rem 2rem;
+    font-weight: 600;
+    color: #0070f3;
+    font-size: 1rem;
+  }
+  .price-tag {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #111;
+  }
+  .story-text {
+    font-size: 1.02rem;
+    font-weight: 300;
+    max-width: 720px;
+    color: #555;
+    margin-top: 1rem;
+    white-space: pre-wrap;
+  }
+  footer {
+    background: #0070f3;
+    color: #fff;
+    text-align: center;
+    padding: 3rem 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+</style>
 </head>
 <body>
 <header>
@@ -178,64 +129,57 @@
 
 <main>
   <section id="about">
-    <h2>About Me</h2>
-    <p>I'm a passionate photographer capturing moments that tell stories. Through my lens, I explore the beauty of the world from breathtaking landscapes to intimate portraits. My prints are more than just pictures; they are emotions frozen in time.</p>
+    <h2>About the Artist</h2>
+    <p class="intro-text">
+      Welcome to Cosmic Canvas, where each photograph tells a unique story through light, shadow, and emotion. Our passion is to freeze moments in time to create timeless works of art for your space.
+    </p>
   </section>
 
   <section id="gallery">
     <h2>Featured Prints</h2>
-    <div class="gallery">
-      <div class="gallery-item">Image 1 <div class="price-tag">$120</div></div>
-      <div class="gallery-item">Image 2 <div class="price-tag">$90</div></div>
-      <div class="gallery-item">Image 3 <div class="price-tag">$150</div></div>
-      <div class="gallery-item">Image 4 <div class="price-tag">$200</div></div>
-      <div class="gallery-item">Image 5 <div class="price-tag">$180</div></div>
-      <div class="gallery-item">Image 6 <div class="price-tag">$110</div></div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-image">&lt;image&gt;</div>
+        <div class="gallery-caption">Serene Mountains<div class="price-tag">$120</div></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-image">&lt;image&gt;</div>
+        <div class="gallery-caption">Urban Twilight<div class="price-tag">$150</div></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-image">&lt;image&gt;</div>
+        <div class="gallery-caption">Desert Dunes<div class="price-tag">$95</div></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-image">&lt;image&gt;</div>
+        <div class="gallery-caption">Portrait of Serenity<div class="price-tag">$200</div></div>
+      </div>
     </div>
   </section>
 
   <section id="story">
-    <h2>My Journey</h2>
-    <p class="story">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
-      Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.
-      Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.
-      Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue.
-      Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
-      Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-      Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
+    <h2>My Story</h2>
+    <p class="story-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna justo, sed faucibus odio bibendum eget. Etiam eget egestas lectus. Curabitur nec semper justo, non pretium urna. Nullam dignissim ac est quis convallis.
+      Praesent maximus consequat arcu, vitae convallis ipsum faucibus et. Aenean in felis et sem consequat fermentum.
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+      Nulla facilisi. In volutpat turpis elit, ut fermentum lacus sagittis eu.
+
+      In a career spanning over a decade, photography has been my lens to the soul of the world. Each frame is a carefully curated window to stories untold and emotions unspoken. From urban landscapes bustling with life to silent deserts where time slows down, my prints aim to bring a slice of the world’s beauty right to your home.
     </p>
   </section>
 
   <section id="contact">
-    <h2>Contact & Ordering</h2>
-    <p>Interested in purchasing a print or commissioning a custom shoot? Reach out!</p>
-    <p>Email: <a href="mailto:contact@cosmiccanvas.com" style="color:#ff3e78;">contact@cosmiccanvas.com</a></p>
+    <h2>Contact & Orders</h2>
+    <p>For custom print orders or inquiries, please reach out.</p>
+    <p>Email: <a href="mailto:contact@cosmiccanvas.com" style="color:#0070f3;">contact@cosmiccanvas.com</a></p>
     <p>Phone: +91 98765 43210</p>
-    <p>Instagram: <a href="https://instagram.com/cosmiccanvas" style="color:#ff3e78;" target="_blank">@cosmiccanvas</a></p>
+    <p>Instagram: <a href="https://instagram.com/cosmiccanvas" style="color:#0070f3;" target="_blank">@cosmiccanvas</a></p>
   </section>
 </main>
 
 <footer>
   &copy; 2025 Cosmic Canvas. All rights reserved.
 </footer>
-
-<script>
-  // Subtle fadeIn animations for sections on scroll
-  const sections = document.querySelectorAll('section');
-  window.addEventListener('scroll', () => {
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      if(rect.top < window.innerHeight - 100) {
-        section.style.opacity = '1';
-        section.style.transform = 'translateY(0px)';
-        section.style.transition = 'opacity 1s ease, transform 1s ease';
-      } else {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(40px)';
-      }
-    });
-  });
-</script>
 </body>
 </html>
