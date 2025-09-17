@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosmic Canvas Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #16213e;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #e94560;
+    }
+    nav a {
+      color: #0f3460;
+      background: #e94560;
+      margin: 0 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #53354a;
+      color: #fff;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      border-bottom: 2px solid #e94560;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #fbf8cc;
+    }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .project-card {
+      background: #0f3460;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 250px;
+      box-shadow: 0 6px 12px rgba(233, 69, 96, 0.5);
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      color: #fbf8cc;
+    }
+    .project-card p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    footer {
+      background: #16213e;
+      text-align: center;
+      padding: 1rem;
+      color: #aaa;
+      font-size: 0.8rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cosmic Canvas</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! I'm a passionate developer and designer exploring the universe of web technologies. This is a demo portfolio site for Cosmic Canvas, showcasing random projects and details.
+      </p>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>Galactic Explorer</h3>
+          <p>A web app to explore stars and galaxies with interactive maps and data visualizations.</p>
+        </div>
+        <div class="project-card">
+          <h3>Cosmic Blog</h3>
+          <p>A simple blogging platform focused on astronomy and space exploration topics.</p>
+        </div>
+        <div class="project-card">
+          <h3>StarChart API</h3>
+          <p>An API service that generates star charts based on user location and date.</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email me at <a href="mailto:contact@cosmiccanvas.com" style="color:#e94560;">contact@cosmiccanvas.com</a></p>
+      <p>Follow me on Twitter: <a href="https://twitter.com/cosmiccanvas" target="_blank" rel="noopener" style="color:#e94560;">@cosmiccanvas</a></p>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Cosmic Canvas. All rights reserved.
+  </footer>
+</body>
+</html>
