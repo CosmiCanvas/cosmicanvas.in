@@ -55,6 +55,14 @@
       0% { opacity: 0.5; transform: scale(0.8); }
       100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 15px rgba(138, 180, 248, 0.6); }
     }
+    .planet-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10; /* Below text but above background */
+    }
     .planet {
       position: absolute;
       border-radius: 50%;
@@ -71,24 +79,24 @@
       border-radius: 50%;
       z-index: -1;
     }
-    .planet-1 { /* Mars */
+    .planet-1 { /* Mars - Vibrant teal and emerald */
       width: 40px;
       height: 40px;
-      background: radial-gradient(circle at 20% 30%, #d35400, #c0392b); /* Reddish tones for Mars */
+      background: radial-gradient(circle at 20% 30%, #00cec9, #00b894);
       top: 15%;
       left: 60%;
     }
-    .planet-2 { /* Jupiter */
+    .planet-2 { /* Jupiter - Rich indigo and violet */
       width: 60px;
       height: 60px;
-      background: radial-gradient(circle at 30% 40%, #f4a261, #e76f51, #f4a261); /* Orange bands for Jupiter */
+      background: radial-gradient(circle at 30% 40%, #4a00e0, #8e2de2);
       top: 50%;
       left: 80%;
     }
-    .planet-3 { /* Saturn with rings */
+    .planet-3 { /* Saturn with rings - Golden and amber */
       width: 50px;
       height: 50px;
-      background: radial-gradient(circle at 25% 35%, #ffdab9, #f4a460); /* Pale yellow for Saturn */
+      background: radial-gradient(circle at 25% 35%, #f1c40f, #e67e22);
       top: 25%;
       left: 30%;
     }
@@ -97,7 +105,7 @@
       position: absolute;
       width: 70px;
       height: 10px;
-      background: rgba(255, 218, 185, 0.7);
+      background: rgba(241, 196, 15, 0.7); /* Matching golden ring */
       border-radius: 50%;
       top: 50%;
       left: -10px;
@@ -141,20 +149,20 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       .hero-section {
-        height: 50vh; /* Reduced further to minimize blank space */
+        height: 70vh; /* Increased height for better layout on mobile */
       }
       h1 {
-        font-size: 2rem; /* Slightly larger text */
+        font-size: 1.8rem; /* Adjusted for mobile readability */
       }
       p {
-        font-size: 0.9rem; /* Slightly larger text */
+        font-size: 0.85rem; /* Adjusted for mobile readability */
       }
       .container-max {
         padding: 0 0.5rem;
       }
-      .planet-1 { width: 30px; height: 30px; }
-      .planet-2 { width: 45px; height: 45px; }
-      .planet-3 { width: 38px; height: 38px; }
+      .planet-1 { width: 25px; height: 25px; top: 10%; left: 50%; }
+      .planet-2 { width: 35px; height: 35px; top: 40%; left: 70%; }
+      .planet-3 { width: 30px; height: 30px; top: 20%; left: 30%; }
       nav, .hidden.md\:flex {
         display: none;
       }
@@ -167,16 +175,19 @@
       .grid-cols-3, .md\:grid-cols-3 {
         grid-template-columns: 1fr;
       }
+      .hero-section .container-max {
+        z-index: 20; /* Ensure text stays above planets on mobile */
+      }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
       .hero-section {
         height: 60vh;
       }
       h1 {
-        font-size: 3rem; /* Slightly larger text */
+        font-size: 2.5rem; /* Adjusted for tablet readability */
       }
       p {
-        font-size: 1.1rem; /* Slightly larger text */
+        font-size: 1rem; /* Adjusted for tablet readability */
       }
       .grid-cols-4, .md\:grid-cols-4 {
         grid-template-columns: repeat(3, 1fr);
@@ -185,113 +196,6 @@
   </style>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Website</title>
-  
-  <!-- Your 500 lines of CSS / Tailwind / Scripts start here -->
-  <style>
-    /* ===============================
-       YOUR ORIGINAL 500 LINES START
-       =============================== */
-    
-    /* (Imagine all your existing CSS here, untouched) */
-    
-    /* ===============================
-       END OF YOUR ORIGINAL 500 LINES
-       =============================== */
-
-    /* === Cosmic Canvas Additions === */
-    body {
-      background: radial-gradient(ellipse at center, #0a0f2c 0%, #000 100%);
-      color: #fff;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    .planet {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ff8c5a, #ff2e63, #2a0a3d);
-      box-shadow: 0 0 40px rgba(255, 100, 150, 0.6);
-      animation: floatPlanet 30s infinite linear;
-      opacity: 0.9;
-    }
-
-    .planet.small {
-      width: 60px;
-      height: 60px;
-      top: 20%;
-      left: 10%;
-      animation-duration: 25s;
-    }
-    .planet.medium {
-      width: 120px;
-      height: 120px;
-      top: 40%;
-      left: 70%;
-      animation-duration: 35s;
-    }
-    .planet.large {
-      width: 200px;
-      height: 200px;
-      top: 70%;
-      left: 30%;
-      animation-duration: 45s;
-    }
-
-    .planet.ring::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 250%;
-      height: 20%;
-      border: 3px solid rgba(255, 200, 255, 0.4);
-      border-radius: 50%;
-      transform: translate(-50%, -50%) rotate(25deg);
-    }
-
-    @keyframes floatPlanet {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-      100% { transform: translateY(0) rotate(360deg); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- === Cosmic Planets Layer (added) === -->
-  <div class="planet small"></div>
-  <div class="planet medium ring"></div>
-  <div class="planet large"></div>
-
-  <!-- ===============================
-       YOUR ORIGINAL 500 LINES OF HTML
-       =============================== -->
-       
-  <!-- Example: -->
-  <header>
-    <!-- Your nav, logo, menus, etc -->
-  </header>
-
-  <main>
-    <!-- Your cards, buttons, text, sections -->
-  </main>
-
-  <footer>
-    <!-- Your footer -->
-  </footer>
-
-  <!-- ===============================
-       END OF YOUR 500 LINES
-       =============================== -->
-
-</body>
-</html>
 </head>
 <body class="text-white">
 <div id="preloader" class="fixed inset-0 bg-[var(--cosmic-dark)] flex items-center justify-center z-50">
@@ -334,13 +238,15 @@
   <div class="star w-1.5 h-1.5 top-[70%] left-[85%]"></div>
   <div class="star w-1 h-1 top-[25%] left-[90%]"></div>
   <div class="star w-0.5 h-0.5 top-[55%] left-[10%]"></div>
-  <div class="planet planet-1"></div>
-  <div class="planet planet-2"></div>
-  <div class="planet planet-3"></div>
+  <div class="planet-container">
+    <div class="planet planet-1"></div>
+    <div class="planet planet-2"></div>
+    <div class="planet planet-3"></div>
+  </div>
   <div class="absolute inset-0 bg-gradient-to-b from-[var(--cosmic-dark)]/50 to-transparent"></div>
 
   <div class="container-max h-full flex flex-col md:flex-row items-center justify-between">
-    <div class="w-full md:w-1/2 z-10 fade-in">
+    <div class="w-full md:w-1/2 z-20 fade-in"> <!-- Increased z-index for text -->
       <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-[var(--accent)]">Cosmic Canvas</h1>
       <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">Transform your space with gallery-grade cosmic photography and curated lifestyle pieces. Premium materials, crafted with passion, delivered across India.</p>
       <div class="mt-6 flex gap-4 flex-col md:flex-row">
