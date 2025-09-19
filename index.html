@@ -12,21 +12,24 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root { 
-      --accent: #bfa86b; 
-      --muted: #6b7280; 
-      --cosmic-blue: #1a1b2f; 
-      --cosmic-dark: #0b0c1f; 
+      --accent: #8ab4f8; /* Lighter blue accent */
+      --muted: #4b6980; /* Muted blue-gray */
+      --cosmic-blue: #1e2a44; /* Deeper blue */
+      --cosmic-dark: #0f1a2f; /* Darker blue */
+      --nebula-purple: #3a4d7e; /* Cooler blue-purple */
+      --nebula-orange: #6a8cc3; /* Blue-toned orange */
+      --nebula-pink: #6b7a9a; /* Softer blue-purple */
     }
     body { 
       font-family: 'Inter', sans-serif; 
       -webkit-font-smoothing: antialiased; 
       -moz-osx-font-smoothing: grayscale; 
-      background: linear-gradient(to bottom, var(--cosmic-dark), #111827); 
+      background: linear-gradient(to bottom, var(--cosmic-dark), #1a2a3d); 
     }
     .glass { 
-      background: rgba(255, 255, 255, 0.1); 
+      background: rgba(30, 42, 68, 0.1); 
       backdrop-filter: blur(10px); 
-      border: 1px solid rgba(255, 255, 255, 0.2); 
+      border: 1px solid rgba(26, 42, 61, 0.2); 
     }
     .container-max { 
       max-width: 1280px; 
@@ -35,31 +38,36 @@
       padding: 0 1.5rem; 
     }
     .cosmic-bg {
-      background: radial-gradient(ellipse at bottom, var(--cosmic-dark) 0%, var(--cosmic-blue) 100%);
+      background: linear-gradient(135deg, var(--cosmic-dark) 0%, var(--cosmic-blue) 30%, #1a2a3d 70%);
       position: relative;
       overflow: hidden;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(58, 77, 126, 0.6) 0%, rgba(58, 77, 126, 0.3) 50%, transparent 70%),
+        radial-gradient(circle at 70% 50%, rgba(106, 140, 195, 0.6) 0%, rgba(106, 140, 195, 0.3) 50%, transparent 70%),
+        radial-gradient(circle at 40% 70%, rgba(107, 122, 154, 0.5) 0%, rgba(107, 122, 154, 0.2) 60%, transparent 80%);
     }
     .star {
       position: absolute;
       border-radius: 50%;
-      background: white;
-      opacity: 0.7;
-      animation: twinkle 3s infinite alternate ease-in-out;
+      background: rgba(138, 180, 248, 0.8); /* Lighter blue stars */
+      box-shadow: 0 0 8px rgba(138, 180, 248, 0.4);
+      animation: twinkle 2s infinite alternate ease-in-out;
     }
     @keyframes twinkle {
-      0% { opacity: 0.4; transform: scale(0.7); }
-      100% { opacity: 1; transform: scale(1.3); }
+      0% { opacity: 0.5; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 15px rgba(138, 180, 248, 0.6); }
     }
     .planet {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.5;
+      opacity: 0.7;
       mix-blend-mode: screen;
-      animation: float 20s infinite linear;
+      animation: float 20s infinite ease-in-out;
+      background: linear-gradient(45deg, rgba(30, 42, 68, 0.2), transparent);
     }
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+      50% { transform: translateY(-30px); }
       100% { transform: translateY(0); }
     }
     .fade-in {
@@ -75,14 +83,14 @@
     }
     .card-hover:hover {
       transform: translateY(-8px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 20px rgba(15, 26, 47, 0.3);
     }
     .btn-hover {
       transition: all 0.3s ease;
     }
     .btn-hover:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 10px rgba(15, 26, 47, 0.2);
     }
     .mobile-menu {
       transition: transform 0.3s ease-in-out;
@@ -96,7 +104,7 @@
 <header class="sticky top-0 z-50 glass backdrop-blur-lg">
   <div class="container-max py-4 flex items-center justify-between">
     <a href="#home" class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-pink-500 flex items-center justify-center text-white text-xl font-bold shadow-lg">CC</div>
+      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--nebula-purple)] to-[var(--nebula-pink)] flex items-center justify-center text-white text-xl font-bold shadow-lg">CC</div>
       <div class="text-xl font-bold tracking-tight">CosmicCanvas</div>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -104,9 +112,9 @@
       <a href="#shop" class="hover:text-[var(--accent)] transition-colors">Shop</a>
       <a href="#prints" class="hover:text-[var(--accent)] transition-colors">Prints</a>
       <a href="#about" class="hover:text-[var(--accent)] transition-colors">About</a>
-      <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Contact</a>
+      <a href="#contact" class="px-4 py-2 bg-[var(--nebula-purple)] text-white rounded-lg btn-hover">Contact</a>
     </nav>
-    <button id="menuBtn" aria-label="Toggle menu" class="md:hidden px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Menu</button>
+    <button id="menuBtn" aria-label="Toggle menu" class="md:hidden px-4 py-2 bg-[var(--nebula-purple)] text-white rounded-lg btn-hover">Menu</button>
   </div>
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="md:hidden hidden mobile-menu fixed inset-x-0 top-16 bg-[var(--cosmic-dark)] shadow-lg">
@@ -115,7 +123,7 @@
       <a href="#shop" class="hover:text-[var(--accent)]">Shop</a>
       <a href="#prints" class="hover:text-[var(--accent)]">Prints</a>
       <a href="#about" class="hover:text-[var(--accent)]">About</a>
-      <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Contact</a>
+      <a href="#contact" class="px-4 py-2 bg-[var(--nebula-purple)] text-white rounded-lg btn-hover">Contact</a>
     </nav>
   </div>
 </header>
@@ -128,16 +136,17 @@
   <div class="star w-1.5 h-1.5 top-[30%] left-[50%]"></div>
   <div class="star w-0.5 h-0.5 top-[20%] left-[80%]"></div>
   <div class="star w-1 h-1 top-[60%] left-[30%]"></div>
-  <div class="planet w-32 h-32 bg-gradient-to-r from-indigo-500 to-pink-500 top-[15%] left-[60%]"></div>
-  <div class="planet w-20 h-20 bg-gradient-to-r from-yellow-400 to-red-400 top-[50%] left-[80%]"></div>
+  <div class="star w-1.5 h-1.5 top-[40%] left-[70%]"></div>
+  <div class="planet w-32 h-32 bg-gradient-to-br from-[var(--nebula-purple)] to-[var(--nebula-orange)] top-[15%] left-[60%]"></div>
+  <div class="planet w-20 h-20 bg-gradient-to-br from-[var(--accent)] to-[var(--nebula-orange)] top-[50%] left-[80%]"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-[var(--cosmic-dark)]/50 to-transparent"></div>
 
   <div class="container-max h-full flex items-center justify-between">
     <div class="w-full md:w-1/2 z-10 fade-in">
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">Cosmic Canvas</h1>
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-[var(--accent)]">Cosmic Canvas</h1>
       <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl">Transform your space with gallery-grade cosmic photography and curated lifestyle pieces. Premium materials, crafted with passion, delivered across India.</p>
       <div class="mt-8 flex gap-4">
-        <a href="#shop" class="px-6 py-3 bg-indigo-600 text-white rounded-lg btn-hover">Shop Bestsellers</a>
+        <a href="#shop" class="px-6 py-3 bg-[var(--nebula-purple)] text-white rounded-lg btn-hover">Shop Bestsellers</a>
         <a href="#prints" class="px-6 py-3 border border-white/30 text-white rounded-lg btn-hover">Explore Prints</a>
       </div>
       <ul class="mt-6 grid grid-cols-1 gap-3 text-sm text-gray-300 max-w-md">
@@ -148,12 +157,9 @@
       </ul>
     </div>
     <div class="hidden md:block w-1/2 relative fade-in" style="animation-delay: 0.2s;">
-      <div class="rounded-3xl overflow-hidden shadow-2xl transform rotate-2">
-        <img src="https://images.unsplash.com/photo-1447433693259-c8549e352d5d" alt="Hero Cosmic Art Showcase" class="w-full h-[600px] object-cover" />
-      </div>
-      <div class="absolute left-10 bottom-8 glass rounded-xl p-4 shadow-lg">
+      <div class="glass rounded-xl p-6 shadow-lg">
         <div class="flex items-center gap-4">
-          <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659" class="w-16 h-16 rounded-md object-cover" alt="Celestial Drift A3 framed print" />
+          <div class="w-16 h-16 rounded-md bg-gradient-to-br from-[var(--nebula-purple)] to-[var(--nebula-orange)]"></div>
           <div>
             <div class="font-semibold text-gray-900">Milky Night</div>
             <div class="text-xs text-gray-700">A3 framed • ₹2,199</div>
@@ -244,7 +250,7 @@
             <div class="text-xs text-gray-400">Estimated profit ₹200</div>
           </div>
           <div class="flex gap-2">
-            <a href="https://www.redbubble.com/your-product-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Buy</a>
+            <a href="https://www.redbubble.com/your-product-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-[var(--nebula-purple)] text-white rounded-lg btn-hover">Buy</a>
             <a href="#" class="px-4 py-2 border border-gray-600 rounded-lg text-sm btn-hover">Quick View</a>
           </div>
         </div>
@@ -259,7 +265,7 @@
             <div class="text-xs text-gray-400">Ships in 3–7 days</div>
           </div>
           <div class="flex gap-2">
-            <a href="https://www.photojaanic.com/your-product-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Buy</a>
+            <a href="https://www.photojaanic.com/your-product-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-[var(--nebula-purple)] text-white rounded-lg btn-hover">Buy</a>
             <a href="#" class="px-4 py-2 border border-gray-600 rounded-lg text-sm btn-hover">Preview</a>
           </div>
         </div>
@@ -274,7 +280,7 @@
             <div class="text-xs text-gray-400">Ships in 5–8 days</div>
           </div>
           <div class="flex gap-2">
-            <a href="https://www.redbubble.com/your-mug-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Buy</a>
+            <a href="https://www.redbubble.com/your-mug-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-[var(--nebula-purple)] text-white rounded-lg btn-hover">Buy</a>
             <a href="#" class="px-4 py-2 border border-gray-600 rounded-lg text-sm btn-hover">Gift Wrap</a>
           </div>
         </div>
@@ -354,24 +360,73 @@
     <h2 class="text-3xl font-bold mb-6">About Cosmic Canvas</h2>
     <p class="text-gray-300 max-w-3xl mx-auto mb-6">Cosmic Canvas brings cosmic-inspired art and photography to Indian homes. We combine fine art quality with a modern aesthetic to capture the universe's beauty.</p>
     <p class="text-gray-300 max-w-3xl mx-auto mb-6">Our prints use archival papers and sustainable materials. Each collection is curated for astronomy lovers and art enthusiasts.</p>
-    <h3 class="text-xl font-semibold mt-8 mb-4">Frequently Asked Questions</h3>
-    <ul class="list-disc pl-6 text-gray-300 text-left max-w-2xl mx-auto">
-      <li class="mb-2">Do you ship across India? — Yes, typically within 3–7 days.</li>
-      <li class="mb-2">Can I order a custom print? — Upload your photo for a mockup.</li>
-      <li class="mb-2">Are your materials eco-friendly? — We prioritize sustainability.</li>
-      <li>Do you offer gift wrapping? — Available for select products.</li>
-    </ul>
+    <h3 class="text-xl font-semibold mt-8 mb-4 text-[var(--accent)]">Frequently Asked Questions</h3>
+    <p class="text-gray-300 mb-6 max-w-2xl mx-auto">Explore answers to common queries about our services and products.</p>
+    <div class="max-w-2xl mx-auto space-y-4">
+      <details class="group bg-[var(--cosmic-blue)] rounded-lg p-4 shadow-lg">
+        <summary class="text-sm font-medium text-white cursor-pointer list-none focus:outline-none">
+          <span class="flex items-center justify-between">
+            Do you ship across India?
+            <span class="transition-transform duration-300 group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </span>
+        </summary>
+        <p class="mt-2 text-sm text-gray-300">Yes, we ship nationwide with delivery typically taking 3–7 days.</p>
+      </details>
+      <details class="group bg-[var(--cosmic-blue)] rounded-lg p-4 shadow-lg">
+        <summary class="text-sm font-medium text-white cursor-pointer list-none focus:outline-none">
+          <span class="flex items-center justify-between">
+            Can I order a custom print?
+            <span class="transition-transform duration-300 group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </span>
+        </summary>
+        <p class="mt-2 text-sm text-gray-300">Absolutely! Upload your photo, and we’ll create a free cosmic-styled mockup for you.</p>
+      </details>
+      <details class="group bg-[var(--cosmic-blue)] rounded-lg p-4 shadow-lg">
+        <summary class="text-sm font-medium text-white cursor-pointer list-none focus:outline-none">
+          <span class="flex items-center justify-between">
+            Are your materials eco-friendly?
+            <span class="transition-transform duration-300 group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </span>
+        </summary>
+        <p class="mt-2 text-sm text-gray-300">Yes, we prioritize sustainability with eco-friendly, archival materials.</p>
+      </details>
+      <details class="group bg-[var(--cosmic-blue)] rounded-lg p-4 shadow-lg">
+        <summary class="text-sm font-medium text-white cursor-pointer list-none focus:outline-none">
+          <span class="flex items-center justify-between">
+            Do you offer gift wrapping?
+            <span class="transition-transform duration-300 group-open:rotate-180">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </span>
+        </summary>
+        <p class="mt-2 text-sm text-gray-300">Yes, gift wrapping is available for select products—check at checkout!</p>
+      </details>
+    </div>
   </div>
 </section>
 
 <!-- NEWSLETTER -->
-<section class="py-16 bg-gradient-to-r from-indigo-600 to-pink-500">
+<section class="py-16 bg-gradient-to-r from-[var(--nebula-purple)] to-[var(--nebula-orange)]">
   <div class="container-max text-center">
     <h2 class="text-3xl font-bold mb-4">Join the Cosmic Circle</h2>
     <p class="max-w-2xl mx-auto mb-6 text-gray-200">Exclusive discounts, new drops, and cosmic wallpapers to your inbox.</p>
     <div class="max-w-md mx-auto flex">
       <input type="email" name="email" placeholder="Enter your email" class="flex-grow p-3 rounded-l-xl text-black focus:outline-none" required />
-      <button type="submit" class="px-6 py-3 bg-white text-indigo-600 rounded-r-xl btn-hover">Subscribe</button>
+      <button type="submit" class="px-6 py-3 bg-white text-[var(--nebula-purple)] rounded-r-xl btn-hover">Subscribe</button>
     </div>
   </div>
 </section>
