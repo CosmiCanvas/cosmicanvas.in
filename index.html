@@ -185,6 +185,113 @@
   </style>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+  
+  <!-- Your 500 lines of CSS / Tailwind / Scripts start here -->
+  <style>
+    /* ===============================
+       YOUR ORIGINAL 500 LINES START
+       =============================== */
+    
+    /* (Imagine all your existing CSS here, untouched) */
+    
+    /* ===============================
+       END OF YOUR ORIGINAL 500 LINES
+       =============================== */
+
+    /* === Cosmic Canvas Additions === */
+    body {
+      background: radial-gradient(ellipse at center, #0a0f2c 0%, #000 100%);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .planet {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ff8c5a, #ff2e63, #2a0a3d);
+      box-shadow: 0 0 40px rgba(255, 100, 150, 0.6);
+      animation: floatPlanet 30s infinite linear;
+      opacity: 0.9;
+    }
+
+    .planet.small {
+      width: 60px;
+      height: 60px;
+      top: 20%;
+      left: 10%;
+      animation-duration: 25s;
+    }
+    .planet.medium {
+      width: 120px;
+      height: 120px;
+      top: 40%;
+      left: 70%;
+      animation-duration: 35s;
+    }
+    .planet.large {
+      width: 200px;
+      height: 200px;
+      top: 70%;
+      left: 30%;
+      animation-duration: 45s;
+    }
+
+    .planet.ring::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250%;
+      height: 20%;
+      border: 3px solid rgba(255, 200, 255, 0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(25deg);
+    }
+
+    @keyframes floatPlanet {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- === Cosmic Planets Layer (added) === -->
+  <div class="planet small"></div>
+  <div class="planet medium ring"></div>
+  <div class="planet large"></div>
+
+  <!-- ===============================
+       YOUR ORIGINAL 500 LINES OF HTML
+       =============================== -->
+       
+  <!-- Example: -->
+  <header>
+    <!-- Your nav, logo, menus, etc -->
+  </header>
+
+  <main>
+    <!-- Your cards, buttons, text, sections -->
+  </main>
+
+  <footer>
+    <!-- Your footer -->
+  </footer>
+
+  <!-- ===============================
+       END OF YOUR 500 LINES
+       =============================== -->
+
+</body>
+</html>
 </head>
 <body class="text-white">
 <div id="preloader" class="fixed inset-0 bg-[var(--cosmic-dark)] flex items-center justify-center z-50">
