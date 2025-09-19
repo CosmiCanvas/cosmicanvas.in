@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosmic Canvas — Premium Photography & Art Prints</title>
   <meta name="description" content="Cosmic Canvas — gallery-quality photography prints, premium merch, cosmic-inspired home decor. Fast India delivery, archival papers and custom portrait mockups." />
   <meta property="og:title" content="Cosmic Canvas — Premium Photography & Art Prints" />
@@ -12,19 +12,20 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root { 
-      --accent: #8ab4f8; /* Lighter blue accent */
-      --muted: #4b6980; /* Muted blue-gray */
-      --cosmic-blue: #1e2a44; /* Deeper blue */
-      --cosmic-dark: #0f1a2f; /* Darker blue */
-      --nebula-purple: #3a4d7e; /* Cooler blue-purple */
-      --nebula-orange: #6a8cc3; /* Blue-toned orange */
-      --nebula-pink: #6b7a9a; /* Softer blue-purple */
+      --accent: #8ab4f8; 
+      --muted: #4b6980; 
+      --cosmic-blue: #1e2a44; 
+      --cosmic-dark: #0f1a2f; 
+      --nebula-purple: #3a4d7e; 
+      --nebula-orange: #6a8cc3; 
+      --nebula-pink: #6b7a9a; 
     }
     body { 
       font-family: 'Inter', sans-serif; 
       -webkit-font-smoothing: antialiased; 
       -moz-osx-font-smoothing: grayscale; 
       background: linear-gradient(to bottom, var(--cosmic-dark), #1a2a3d); 
+      overflow-x: hidden; /* Prevent horizontal scrolling on mobile */
     }
     .glass { 
       background: rgba(30, 42, 68, 0.1); 
@@ -49,7 +50,7 @@
     .star {
       position: absolute;
       border-radius: 50%;
-      background: rgba(138, 180, 248, 0.8); /* Lighter blue stars */
+      background: rgba(138, 180, 248, 0.8);
       box-shadow: 0 0 8px rgba(138, 180, 248, 0.4);
       animation: twinkle 2s infinite alternate ease-in-out;
     }
@@ -60,10 +61,43 @@
     .planet {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.7;
+      opacity: 0.9;
       mix-blend-mode: screen;
       animation: float 20s infinite ease-in-out;
-      background: linear-gradient(45deg, rgba(30, 42, 68, 0.2), transparent);
+    }
+    .planet::before {
+      content: '';
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(138, 180, 248, 0.5);
+      z-index: -1;
+    }
+    .planet-1 {
+      width: 32px;
+      height: 32px;
+      background: radial-gradient(circle at 20% 30%, #6a8cc3, #9b59b6); /* Blue to purple */
+      top: 15%;
+      left: 60%;
+    }
+    .planet-2 {
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle at 30% 40%, #3498db, #8e44ad); /* Bright blue to deep purple */
+      top: 50%;
+      left: 80%;
+    }
+    .planet-3 {
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle at 25% 35%, #1abc9c, #2ecc71); /* Teal to green */
+      top: 25%;
+      left: 30%;
+    }
+    .planet:hover {
+      transform: scale(1.1) translateY(-10px);
+      transition: transform 0.3s ease;
     }
     @keyframes float {
       0% { transform: translateY(0); }
@@ -73,7 +107,7 @@
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
+      animation: fadeIn 0.5s ease-out forwards; /* Faster fade for mobile optimization */
     }
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
@@ -94,6 +128,47 @@
     }
     .mobile-menu {
       transition: transform 0.3s ease-in-out;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 70vh; /* Reduced height for mobile */
+      }
+      h1 {
+        font-size: 2.5rem; /* Smaller headline on mobile */
+      }
+      p {
+        font-size: 0.9rem; /* Smaller text on mobile */
+      }
+      .container-max {
+        padding: 0 1rem; /* Reduced padding on mobile */
+      }
+      .planet-1 { width: 24px; height: 24px; }
+      .planet-2 { width: 16px; height: 16px; }
+      .planet-3 { width: 18px; height: 18px; }
+      nav, .hidden.md\:flex {
+        display: none; /* Hide nav on small screens until toggled */
+      }
+      #mobileMenu {
+        top: 14rem; /* Adjusted for smaller screens */
+      }
+      .grid-cols-4, .md\:grid-cols-4 {
+        grid-template-columns: 1fr 1fr; /* Two columns on mobile */
+      }
+      .grid-cols-3, .md\:grid-cols-3 {
+        grid-template-columns: 1fr; /* Single column on mobile */
+      }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-section {
+        height: 80vh; /* Adjusted for tablets */
+      }
+      h1 {
+        font-size: 3.5rem; /* Medium headline for tablets */
+      }
+      .grid-cols-4, .md\:grid-cols-4 {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on tablets */
+      }
     }
   </style>
   <!-- Google Fonts -->
@@ -130,15 +205,16 @@
 
 <!-- HERO -->
 <main id="home">
-<section class="relative h-[90vh] cosmic-bg">
+<section class="relative hero-section h-[90vh]">
   <!-- Stars and Planets -->
   <div class="star w-1 h-1 top-[10%] left-[15%]"></div>
   <div class="star w-1.5 h-1.5 top-[30%] left-[50%]"></div>
   <div class="star w-0.5 h-0.5 top-[20%] left-[80%]"></div>
   <div class="star w-1 h-1 top-[60%] left-[30%]"></div>
   <div class="star w-1.5 h-1.5 top-[40%] left-[70%]"></div>
-  <div class="planet w-32 h-32 bg-gradient-to-br from-[var(--nebula-purple)] to-[var(--nebula-orange)] top-[15%] left-[60%]"></div>
-  <div class="planet w-20 h-20 bg-gradient-to-br from-[var(--accent)] to-[var(--nebula-orange)] top-[50%] left-[80%]"></div>
+  <div class="planet planet-1"></div>
+  <div class="planet planet-2"></div>
+  <div class="planet planet-3"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-[var(--cosmic-dark)]/50 to-transparent"></div>
 
   <div class="container-max h-full flex items-center justify-between">
@@ -258,7 +334,7 @@
       <article class="bg-[var(--cosmic-blue)] rounded-2xl shadow-lg p-6 card-hover fade-in" style="animation-delay: 0.1s;">
         <img src="https://images.unsplash.com/photo-1506702314064-3e0e9c8032c3" alt="Gallery Print Milky Night — A3 framed" class="w-full h-64 object-cover rounded-xl" />
         <h3 class="mt-4 font-semibold text-[var(--accent)]">Gallery Print — Milky Night</h3>
-        <p class="text-sm text-gray-300 mt-2">Archival matte paper, A3 framed. Cosmic wall art for your home.</p>
+        <p class="mt-2 text-sm text-gray-300">Archival matte paper, A3 framed. Cosmic wall art for your home.</p>
         <div class="mt-4 flex items-center justify-between">
           <div>
             <div class="text-sm font-semibold text-white">₹2,199</div>
@@ -273,7 +349,7 @@
       <article class="bg-[var(--cosmic-blue)] rounded-2xl shadow-lg p-6 card-hover fade-in" style="animation-delay: 0.2s;">
         <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21" alt="Cosmic Mug Panorama — Ceramic Mug" class="w-full h-64 object-cover rounded-xl" />
         <h3 class="mt-4 font-semibold text-[var(--accent)]">Cosmic Mug — Panorama</h3>
-        <p class="text-sm text-gray-300 mt-2">Ceramic mug with full-wrap cosmic design, ideal for coffee lovers.</p>
+        <p class="mt-2 text-sm text-gray-300">Ceramic mug with full-wrap cosmic design, ideal for coffee lovers.</p>
         <div class="mt-4 flex items-center justify-between">
           <div>
             <div class="text-sm font-semibold text-white">₹399</div>
@@ -294,7 +370,7 @@
   <div class="container-max">
     <h2 class="text-3xl font-bold mb-6">Prints — Gallery Quality</h2>
     <p class="text-gray-300 mb-8 max-w-3xl">Archival papers and museum-grade framing. Choose unframed prints or framed for instant display. Perfect for cosmic lovers seeking high-quality wall art.</p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="bg-[var(--cosmic-blue)] rounded-xl p-6 shadow-lg card-hover fade-in">
         <h3 class="font-semibold text-[var(--accent)]">Archival Matte</h3>
         <p class="text-sm text-gray-300 mt-2">Acid-free, museum-safe paper for vibrant art that lasts decades.</p>
@@ -316,7 +392,7 @@
   <div class="container-max text-center">
     <h2 class="text-3xl font-bold mb-6">Why Choose Cosmic Canvas?</h2>
     <p class="max-w-3xl mx-auto text-lg text-gray-300 mb-8">Every product is a piece of art — printed with unmatched quality, designed with passion, and shipped with care.</p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="p-6 bg-[var(--cosmic-blue)] rounded-xl shadow-lg card-hover fade-in">
         <h4 class="font-semibold text-[var(--accent)] mb-2">Premium Materials</h4>
         <p class="text-sm text-gray-300">Archival prints, fine cotton fabrics, and durable ceramics.</p>
@@ -337,7 +413,7 @@
 <section class="py-16">
   <div class="container-max text-center">
     <h2 class="text-3xl font-bold mb-8">What Our Customers Say</h2>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in">
         <p class="text-gray-300 mb-4">“The prints look absolutely stunning in my living room. Premium quality!”</p>
         <h4 class="font-semibold text-[var(--accent)]">— Anjali R.</h4>
@@ -465,15 +541,15 @@
     menuBtn.textContent = mobileMenu.classList.contains('hidden') ? 'Menu' : 'Close';
   });
 
-  // Fade-in on scroll
+  // Fade-in on scroll with optimized threshold
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-in');
-        observer.unobserve(entry.target);
+        observer.unobserve(entry.target); // Unobserve to reduce processing
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.01 }); // Lower threshold for mobile optimization
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
