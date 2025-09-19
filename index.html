@@ -24,7 +24,7 @@
       font-family: 'Inter', sans-serif; 
       -webkit-font-smoothing: antialiased; 
       -moz-osx-font-smoothing: grayscale; 
-      background: linear-gradient(to bottom, var(--cosmic-dark), #1a2a3d); 
+      background: linear-gradient(to bottom, #000000, #1e3a8a); /* Pitch black to blue gradient */
       overflow-x: hidden; 
       margin: 0; 
     }
@@ -40,13 +40,8 @@
       padding: 0 1rem; 
     }
     .cosmic-bg {
-      background: linear-gradient(135deg, var(--cosmic-dark) 0%, var(--cosmic-blue) 30%, #1a2a3d 70%);
       position: relative;
       overflow: hidden;
-      background-image: 
-        radial-gradient(circle at 20% 30%, rgba(58, 77, 126, 0.6) 0%, rgba(58, 77, 126, 0.3) 50%, transparent 70%),
-        radial-gradient(circle at 70% 50%, rgba(106, 140, 195, 0.6) 0%, rgba(106, 140, 195, 0.3) 50%, transparent 70%),
-        radial-gradient(circle at 40% 70%, rgba(107, 122, 154, 0.5) 0%, rgba(107, 122, 154, 0.2) 60%, transparent 80%);
     }
     .star {
       position: absolute;
@@ -149,10 +144,10 @@
         height: 50vh; /* Reduced further to minimize blank space */
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 2rem; /* Slightly larger text */
       }
       p {
-        font-size: 0.8rem;
+        font-size: 0.9rem; /* Slightly larger text */
       }
       .container-max {
         padding: 0 0.5rem;
@@ -178,7 +173,10 @@
         height: 60vh;
       }
       h1 {
-        font-size: 2.8rem;
+        font-size: 3rem; /* Slightly larger text */
+      }
+      p {
+        font-size: 1.1rem; /* Slightly larger text */
       }
       .grid-cols-4, .md\:grid-cols-4 {
         grid-template-columns: repeat(3, 1fr);
@@ -247,17 +245,6 @@
         <li class="flex items-center gap-2">✦ Custom portrait mockups</li>
         <li class="flex items-center gap-2">✦ Secure checkout</li>
       </ul>
-    </div>
-    <div class="hidden md:block w-1/2 relative fade-in" style="animation-delay: 0.2s;">
-      <div class="glass rounded-xl p-6 shadow-lg">
-        <div class="flex items-center gap-4">
-          <div class="w-16 h-16 rounded-md bg-gradient-to-br from-[var(--nebula-purple)] to-[var(--nebula-orange)]"></div>
-          <div>
-            <div class="font-semibold text-gray-900">Milky Night</div>
-            <div class="text-xs text-gray-700">A3 framed • ₹2,199</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
