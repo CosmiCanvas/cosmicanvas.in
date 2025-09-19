@@ -7,17 +7,35 @@
   <meta name="description" content="Cosmic Canvas — gallery-quality photography prints, premium merch, cosmic-inspired home decor. Fast India delivery, archival papers and custom portrait mockups." />
   <meta property="og:title" content="Cosmic Canvas — Premium Photography & Art Prints" />
   <meta property="og:description" content="Gallery-quality prints, framed options, merchandise and quick India shipping. Cosmic-inspired designs for astronomy lovers." />
-  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1447433693259-c8549e352d5d" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --accent:#bfa86b; --muted:#6b7280; }
-    body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-    .glass { background: rgba(255,255,255,0.66); backdrop-filter: blur(6px); }
-    .container-max { max-width:1200px; margin-left:auto; margin-right:auto; }
-    /* Cosmic stars background */
+    :root { 
+      --accent: #bfa86b; 
+      --muted: #6b7280; 
+      --cosmic-blue: #1a1b2f; 
+      --cosmic-dark: #0b0c1f; 
+    }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      -webkit-font-smoothing: antialiased; 
+      -moz-osx-font-smoothing: grayscale; 
+      background: linear-gradient(to bottom, var(--cosmic-dark), #111827); 
+    }
+    .glass { 
+      background: rgba(255, 255, 255, 0.1); 
+      backdrop-filter: blur(10px); 
+      border: 1px solid rgba(255, 255, 255, 0.2); 
+    }
+    .container-max { 
+      max-width: 1280px; 
+      margin-left: auto; 
+      margin-right: auto; 
+      padding: 0 1.5rem; 
+    }
     .cosmic-bg {
-      background: radial-gradient(ellipse at bottom, #0b0c1f 0%, #1a1b2f 100%);
+      background: radial-gradient(ellipse at bottom, var(--cosmic-dark) 0%, var(--cosmic-blue) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -25,81 +43,119 @@
       position: absolute;
       border-radius: 50%;
       background: white;
-      opacity: 0.8;
-      animation: twinkle 2s infinite alternate;
+      opacity: 0.7;
+      animation: twinkle 3s infinite alternate ease-in-out;
     }
     @keyframes twinkle {
-      0% { opacity: 0.3; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1.2); }
+      0% { opacity: 0.4; transform: scale(0.7); }
+      100% { opacity: 1; transform: scale(1.3); }
     }
     .planet {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.6;
+      opacity: 0.5;
       mix-blend-mode: screen;
+      animation: float 20s infinite linear;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .btn-hover {
+      transition: all 0.3s ease;
+    }
+    .btn-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .mobile-menu {
+      transition: transform 0.3s ease-in-out;
     }
   </style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
-
+<body class="text-white">
 <!-- NAV -->
-<header class="sticky top-0 z-50 bg-white/70 backdrop-blur border-b border-gray-100">
-  <div class="container-max px-6 py-4 flex items-center justify-between">
+<header class="sticky top-0 z-50 glass backdrop-blur-lg">
+  <div class="container-max py-4 flex items-center justify-between">
     <a href="#home" class="flex items-center gap-3">
-      <div class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-700 to-pink-500 flex items-center justify-center text-white shadow">CC</div>
-      <div class="text-lg font-semibold">CosmicCanvas</div>
+      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-pink-500 flex items-center justify-center text-white text-xl font-bold shadow-lg">CC</div>
+      <div class="text-xl font-bold tracking-tight">CosmicCanvas</div>
     </a>
-    <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="#portfolio" class="hover:underline">Portfolio</a>
-      <a href="#shop" class="hover:underline">Shop</a>
-      <a href="#prints" class="hover:underline">Prints</a>
-      <a href="#about" class="hover:underline">About</a>
-      <a href="#contact" class="px-3 py-2 bg-black text-white rounded-md">Contact</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#portfolio" class="hover:text-[var(--accent)] transition-colors">Portfolio</a>
+      <a href="#shop" class="hover:text-[var(--accent)] transition-colors">Shop</a>
+      <a href="#prints" class="hover:text-[var(--accent)] transition-colors">Prints</a>
+      <a href="#about" class="hover:text-[var(--accent)] transition-colors">About</a>
+      <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Contact</a>
     </nav>
-    <div class="md:hidden">
-      <button id="menuBtn" aria-label="Open menu" class="px-3 py-2 bg-black text-white rounded-md">Menu</button>
-    </div>
+    <button id="menuBtn" aria-label="Toggle menu" class="md:hidden px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Menu</button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden hidden mobile-menu fixed inset-x-0 top-16 bg-[var(--cosmic-dark)] shadow-lg">
+    <nav class="flex flex-col items-center gap-4 py-6 text-lg">
+      <a href="#portfolio" class="hover:text-[var(--accent)]">Portfolio</a>
+      <a href="#shop" class="hover:text-[var(--accent)]">Shop</a>
+      <a href="#prints" class="hover:text-[var(--accent)]">Prints</a>
+      <a href="#about" class="hover:text-[var(--accent)]">About</a>
+      <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Contact</a>
+    </nav>
   </div>
 </header>
 
 <!-- HERO -->
 <main id="home">
-<section class="relative h-[85vh] cosmic-bg overflow-hidden">
-  <!-- stars -->
-  <div class="star w-1 h-1 top-10 left-20"></div>
-  <div class="star w-1.5 h-1.5 top-40 left-60"></div>
-  <div class="star w-0.5 h-0.5 top-20 left-80"></div>
-  <!-- planets -->
-  <div class="planet w-24 h-24 bg-gradient-to-r from-indigo-500 to-pink-500 top-12 left-1/2"></div>
-  <div class="planet w-16 h-16 bg-gradient-to-r from-yellow-400 to-red-400 top-64 left-3/4"></div>
+<section class="relative h-[90vh] cosmic-bg">
+  <!-- Stars and Planets -->
+  <div class="star w-1 h-1 top-[10%] left-[15%]"></div>
+  <div class="star w-1.5 h-1.5 top-[30%] left-[50%]"></div>
+  <div class="star w-0.5 h-0.5 top-[20%] left-[80%]"></div>
+  <div class="star w-1 h-1 top-[60%] left-[30%]"></div>
+  <div class="planet w-32 h-32 bg-gradient-to-r from-indigo-500 to-pink-500 top-[15%] left-[60%]"></div>
+  <div class="planet w-20 h-20 bg-gradient-to-r from-yellow-400 to-red-400 top-[50%] left-[80%]"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-[var(--cosmic-dark)]/50 to-transparent"></div>
 
-  <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-transparent"></div>
-  <div class="container-max px-6 h-full flex items-center">
-    <div class="w-full md:w-1/2 text-white z-20">
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Cosmic Canvas</h1>
-      <p class="mt-4 text-lg text-white/90 max-w-xl">Photography turned into gallery‑grade prints and curated cosmic-inspired lifestyle pieces. Premium materials, thoughtful packaging, delivered across India.</p>
-      <p class="text-white/80 mt-4 max-w-xl">Explore our collection of cosmic-themed prints, merchandise, and home decor items that capture the beauty of the universe. Perfect gifts for astronomy enthusiasts and art lovers alike.</p>
+  <div class="container-max h-full flex items-center justify-between">
+    <div class="w-full md:w-1/2 z-10 fade-in">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">Cosmic Canvas</h1>
+      <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl">Transform your space with gallery-grade cosmic photography and curated lifestyle pieces. Premium materials, crafted with passion, delivered across India.</p>
       <div class="mt-8 flex gap-4">
-        <a href="#shop" class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-lg shadow">Shop Bestsellers</a>
-        <a href="#prints" class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 rounded-lg">Explore Prints</a>
+        <a href="#shop" class="px-6 py-3 bg-indigo-600 text-white rounded-lg btn-hover">Shop Bestsellers</a>
+        <a href="#prints" class="px-6 py-3 border border-white/30 text-white rounded-lg btn-hover">Explore Prints</a>
       </div>
-      <ul class="mt-6 grid grid-cols-1 gap-2 text-sm text-white/90 max-w-md">
-        <li>• Archival matte & luster papers</li>
-        <li>• India delivery in 3–7 days (select prints)</li>
-        <li>• Custom portrait mockups — upload & preview</li>
-        <li>• Secure checkout via trusted partners</li>
+      <ul class="mt-6 grid grid-cols-1 gap-3 text-sm text-gray-300 max-w-md">
+        <li class="flex items-center gap-2">✦ Archival matte & luster papers</li>
+        <li class="flex items-center gap-2">✦ India delivery in 3–7 days</li>
+        <li class="flex items-center gap-2">✦ Custom portrait mockups</li>
+        <li class="flex items-center gap-2">✦ Secure checkout</li>
       </ul>
     </div>
-
-    <div class="hidden md:block w-1/2 ml-10 relative">
-      <div class="rounded-3xl overflow-hidden shadow-2xl">
-        <img src="/hero-sample-2.jpg" alt="Hero Cosmic Art Showcase" class="w-full h-[560px] object-cover" />
+    <div class="hidden md:block w-1/2 relative fade-in" style="animation-delay: 0.2s;">
+      <div class="rounded-3xl overflow-hidden shadow-2xl transform rotate-2">
+        <img src="https://images.unsplash.com/photo-1447433693259-c8549e352d5d" alt="Hero Cosmic Art Showcase" class="w-full h-[600px] object-cover" />
       </div>
-      <div class="absolute left-8 bottom-6 glass rounded-xl p-4 border shadow">
+      <div class="absolute left-10 bottom-8 glass rounded-xl p-4 shadow-lg">
         <div class="flex items-center gap-4">
-          <img src="/portfolio/thumb-1.jpg" class="w-14 h-14 rounded-md object-cover" alt="Celestial Drift A3 framed print" />
+          <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659" class="w-16 h-16 rounded-md object-cover" alt="Celestial Drift A3 framed print" />
           <div>
-            <div class="font-medium">Gallery Print — 'Milky Night'</div>
+            <div class="font-semibold text-gray-900">Milky Night</div>
             <div class="text-xs text-gray-700">A3 framed • ₹2,199</div>
           </div>
         </div>
@@ -109,61 +165,61 @@
 </section>
 
 <!-- FEATURES -->
-<section class="-mt-20">
-  <div class="container-max px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
-    <div class="bg-white rounded-2xl p-6 shadow">
-      <h4 class="font-semibold">Premium Prints</h4>
-      <p class="mt-2 text-sm text-gray-600">Archival, acid-free papers for long-lasting gallery quality wall art.</p>
+<section class="py-12">
+  <div class="container-max grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in">
+      <h4 class="font-semibold text-[var(--accent)]">Premium Prints</h4>
+      <p class="mt-2 text-sm text-gray-300">Archival, acid-free papers for vibrant, long-lasting wall art.</p>
     </div>
-    <div class="bg-white rounded-2xl p-6 shadow">
-      <h4 class="font-semibold">Fast Delivery</h4>
-      <p class="mt-2 text-sm text-gray-600">India shipping in 3–7 days via trusted partners.</p>
+    <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.1s;">
+      <h4 class="font-semibold text-[var(--accent)]">Fast Delivery</h4>
+      <p class="mt-2 text-sm text-gray-300">India shipping in 3–7 days via trusted partners.</p>
     </div>
-    <div class="bg-white rounded-2xl p-6 shadow">
-      <h4 class="font-semibold">Custom Portraits</h4>
-      <p class="mt-2 text-sm text-gray-600">Upload a photo to receive a free preview before printing your personalized artwork.</p>
+    <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.2s;">
+      <h4 class="font-semibold text-[var(--accent)]">Custom Portraits</h4>
+      <p class="mt-2 text-sm text-gray-300">Upload a photo for a free cosmic-styled preview.</p>
     </div>
-    <div class="bg-white rounded-2xl p-6 shadow">
-      <h4 class="font-semibold">Satisfaction Guarantee</h4>
-      <p class="mt-2 text-sm text-gray-600">30-day returns for any manufacturing defects, ensuring peace of mind.</p>
+    <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.3s;">
+      <h4 class="font-semibold text-[var(--accent)]">Satisfaction Guarantee</h4>
+      <p class="mt-2 text-sm text-gray-300">30-day returns for manufacturing defects.</p>
     </div>
   </div>
 </section>
 
 <!-- PORTFOLIO -->
 <section id="portfolio" class="py-16">
-  <div class="container-max px-6">
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold">Recent Work</h2>
-      <a href="#prints" class="text-sm text-black/70">View all prints</a>
+  <div class="container-max">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-bold">Recent Work</h2>
+      <a href="#prints" class="text-sm text-[var(--accent)] hover:underline">View all prints</a>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <figure class="rounded-lg overflow-hidden bg-white shadow">
-        <img src="/portfolio/thumb-1.jpg" alt="Celestial Drift — Night Sky Photography Print" class="w-full h-56 object-cover" />
-        <figcaption class="p-3">
-          <div class="font-medium">Celestial Drift</div>
-          <div class="text-xs text-gray-500">A3 framed • ₹2,199</div>
+      <figure class="rounded-xl overflow-hidden bg-[var(--cosmic-blue)] shadow-lg card-hover fade-in">
+        <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659" alt="Celestial Drift — Night Sky Photography Print" class="w-full h-64 object-cover" />
+        <figcaption class="p-4">
+          <div class="font-semibold text-[var(--accent)]">Celestial Drift</div>
+          <div class="text-sm text-gray-300">A3 framed • ₹2,199</div>
         </figcaption>
       </figure>
-      <figure class="rounded-lg overflow-hidden bg-white shadow">
-        <img src="/portfolio/thumb-2.jpg" alt="Aurora Lane — Northern Lights Print" class="w-full h-56 object-cover" />
-        <figcaption class="p-3">
-          <div class="font-medium">Aurora Lane</div>
-          <div class="text-xs text-gray-500">A3 framed • ₹2,499</div>
+      <figure class="rounded-xl overflow-hidden bg-[var(--cosmic-blue)] shadow-lg card-hover fade-in" style="animation-delay: 0.1s;">
+        <img src="https://images.unsplash.com/photo-1454789548928-9efd0cb136d4" alt="Aurora Lane — Northern Lights Print" class="w-full h-64 object-cover" />
+        <figcaption class="p-4">
+          <div class="font-semibold text-[var(--accent)]">Aurora Lane</div>
+          <div class="text-sm text-gray-300">A3 framed • ₹2,499</div>
         </figcaption>
       </figure>
-      <figure class="rounded-lg overflow-hidden bg-white shadow">
-        <img src="/portfolio/thumb-3.jpg" alt="Night Bloom — Floral Cosmic Art Print" class="w-full h-56 object-cover" />
-        <figcaption class="p-3">
-          <div class="font-medium">Night Bloom</div>
-          <div class="text-xs text-gray-500">A3 framed • ₹1,999</div>
+      <figure class="rounded-xl overflow-hidden bg-[var(--cosmic-blue)] shadow-lg card-hover fade-in" style="animation-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45" alt="Night Bloom — Floral Cosmic Art Print" class="w-full h-64 object-cover" />
+        <figcaption class="p-4">
+          <div class="font-semibold text-[var(--accent)]">Night Bloom</div>
+          <div class="text-sm text-gray-300">A3 framed • ₹1,999</div>
         </figcaption>
       </figure>
-      <figure class="rounded-lg overflow-hidden bg-white shadow">
-        <img src="/portfolio/thumb-4.jpg" alt="Sea of Stars — Large Format Print" class="w-full h-56 object-cover" />
-        <figcaption class="p-3">
-          <div class="font-medium">Sea of Stars</div>
-          <div class="text-xs text-gray-500">A2 framed • ₹3,499</div>
+      <figure class="rounded-xl overflow-hidden bg-[var(--cosmic-blue)] shadow-lg card-hover fade-in" style="animation-delay: 0.3s;">
+        <img src="https://images.unsplash.com/photo-1447433693259-c8549e352d5d" alt="Sea of Stars — Large Format Print" class="w-full h-64 object-cover" />
+        <figcaption class="p-4">
+          <div class="font-semibold text-[var(--accent)]">Sea of Stars</div>
+          <div class="text-sm text-gray-300">A2 framed • ₹3,499</div>
         </figcaption>
       </figure>
     </div>
@@ -171,58 +227,55 @@
 </section>
 
 <!-- SHOP -->
-<section id="shop" class="py-16 bg-gray-50">
-  <div class="container-max px-6">
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold">Shop Bestsellers</h2>
-      <div class="text-sm text-gray-500">Hand-picked for cosmic lovers</div>
+<section id="shop" class="py-16 bg-[var(--cosmic-dark)]">
+  <div class="container-max">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-bold">Shop Bestsellers</h2>
+      <div class="text-sm text-gray-400">Hand-picked for cosmic lovers</div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Card 1 -->
-      <article class="bg-white rounded-2xl shadow p-6">
-        <img src="/products/tshirt-sample.jpg" alt="Cosmic Tee Galaxy Print — Premium Cotton T-shirt" class="w-full h-56 object-cover rounded-xl" />
-        <h3 class="mt-4 font-semibold">Cosmic Tee — Galaxy Print</h3>
-        <p class="text-sm text-gray-600 mt-1">Soft cotton tee with a vibrant all-over galaxy design, perfect for astronomy enthusiasts.</p>
+      <article class="bg-[var(--cosmic-blue)] rounded-2xl shadow-lg p-6 card-hover fade-in">
+        <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679" alt="Cosmic Tee Galaxy Print — Premium Cotton T-shirt" class="w-full h-64 object-cover rounded-xl" />
+        <h3 class="mt-4 font-semibold text-[var(--accent)]">Cosmic Tee — Galaxy Print</h3>
+        <p class="text-sm text-gray-300 mt-2">Soft cotton tee with vibrant galaxy design, perfect for astronomy enthusiasts.</p>
         <div class="mt-4 flex items-center justify-between">
           <div>
-            <div class="text-sm font-semibold">₹699</div>
+            <div class="text-sm font-semibold text-white">₹699</div>
             <div class="text-xs text-gray-400">Estimated profit ₹200</div>
           </div>
           <div class="flex gap-2">
-            <a href="https://www.redbubble.com/your-product-link" target="_blank" rel="noreferrer" class="px-3 py-2 bg-black text-white rounded-md text-sm">Buy</a>
-            <a href="#" class="px-3 py-2 border border-gray-200 rounded-md text-sm">Quick View</a>
+            <a href="https://www.redbubble.com/your-product-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Buy</a>
+            <a href="#" class="px-4 py-2 border border-gray-600 rounded-lg text-sm btn-hover">Quick View</a>
           </div>
         </div>
       </article>
-      <!-- Card 2 -->
-      <article class="bg-white rounded-2xl shadow p-6">
-        <img src="/products/print-sample.jpg" alt="Gallery Print Milky Night — A3 framed" class="w-full h-56 object-cover rounded-xl" />
-        <h3 class="mt-4 font-semibold">Gallery Print — Milky Night</h3>
-        <p class="text-sm text-gray-600 mt-1">Archival matte paper, A3 framed. Perfect cosmic wall art for your home.</p>
+      <article class="bg-[var(--cosmic-blue)] rounded-2xl shadow-lg p-6 card-hover fade-in" style="animation-delay: 0.1s;">
+        <img src="https://images.unsplash.com/photo-1506702314064-3e0e9c8032c3" alt="Gallery Print Milky Night — A3 framed" class="w-full h-64 object-cover rounded-xl" />
+        <h3 class="mt-4 font-semibold text-[var(--accent)]">Gallery Print — Milky Night</h3>
+        <p class="text-sm text-gray-300 mt-2">Archival matte paper, A3 framed. Cosmic wall art for your home.</p>
         <div class="mt-4 flex items-center justify-between">
           <div>
-            <div class="text-sm font-semibold">₹2,199</div>
+            <div class="text-sm font-semibold text-white">₹2,199</div>
             <div class="text-xs text-gray-400">Ships in 3–7 days</div>
           </div>
           <div class="flex gap-2">
-            <a href="https://www.photojaanic.com/your-product-link" target="_blank" rel="noreferrer" class="px-3 py-2 bg-black text-white rounded-md text-sm">Buy</a>
-            <a href="#" class="px-3 py-2 border border-gray-200 rounded-md text-sm">Preview</a>
+            <a href="https://www.photojaanic.com/your-product-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Buy</a>
+            <a href="#" class="px-4 py-2 border border-gray-600 rounded-lg text-sm btn-hover">Preview</a>
           </div>
         </div>
       </article>
-      <!-- Card 3 -->
-      <article class="bg-white rounded-2xl shadow p-6">
-        <img src="/products/mug-sample.jpg" alt="Cosmic Mug Panorama — Ceramic Mug" class="w-full h-56 object-cover rounded-xl" />
-        <h3 class="mt-4 font-semibold">Cosmic Mug — Panorama</h3>
-        <p class="text-sm text-gray-600 mt-1">Ceramic mug with full-wrap cosmic design, ideal for daily coffee lovers.</p>
+      <article class="bg-[var(--cosmic-blue)] rounded-2xl shadow-lg p-6 card-hover fade-in" style="animation-delay: 0.2s;">
+        <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21" alt="Cosmic Mug Panorama — Ceramic Mug" class="w-full h-64 object-cover rounded-xl" />
+        <h3 class="mt-4 font-semibold text-[var(--accent)]">Cosmic Mug — Panorama</h3>
+        <p class="text-sm text-gray-300 mt-2">Ceramic mug with full-wrap cosmic design, ideal for coffee lovers.</p>
         <div class="mt-4 flex items-center justify-between">
           <div>
-            <div class="text-sm font-semibold">₹399</div>
+            <div class="text-sm font-semibold text-white">₹399</div>
             <div class="text-xs text-gray-400">Ships in 5–8 days</div>
           </div>
           <div class="flex gap-2">
-            <a href="https://www.redbubble.com/your-mug-link" target="_blank" rel="noreferrer" class="px-3 py-2 bg-black text-white rounded-md text-sm">Buy</a>
-            <a href="#" class="px-3 py-2 border border-gray-200 rounded-md text-sm">Gift Wrap</a>
+            <a href="https://www.redbubble.com/your-mug-link" target="_blank" rel="noreferrer" class="px-4 py-2 bg-indigo-600 text-white rounded-lg btn-hover">Buy</a>
+            <a href="#" class="px-4 py-2 border border-gray-600 rounded-lg text-sm btn-hover">Gift Wrap</a>
           </div>
         </div>
       </article>
@@ -231,44 +284,44 @@
 </section>
 
 <!-- PRINTS DETAIL -->
-<section id="prints" class="py-12">
-  <div class="container-max px-6">
-    <h2 class="text-2xl font-bold mb-4">Prints — Gallery Quality</h2>
-    <p class="text-gray-700 mb-6 max-w-3xl">We source archival papers and museum-grade framing. Choose unframed prints to save, or framed to display instantly. Options: Archival Matte, Luster/Satin, Canvas and Framed Float. Perfect for cosmic lovers seeking high-quality wall art.</p>
+<section id="prints" class="py-16">
+  <div class="container-max">
+    <h2 class="text-3xl font-bold mb-6">Prints — Gallery Quality</h2>
+    <p class="text-gray-300 mb-8 max-w-3xl">Archival papers and museum-grade framing. Choose unframed prints or framed for instant display. Perfect for cosmic lovers seeking high-quality wall art.</p>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-xl p-6 shadow">
-        <h3 class="font-semibold">Archival Matte</h3>
-        <p class="text-sm text-gray-600 mt-2">Acid-free, museum-safe matte paper preserves your art for decades.</p>
+      <div class="bg-[var(--cosmic-blue)] rounded-xl p-6 shadow-lg card-hover fade-in">
+        <h3 class="font-semibold text-[var(--accent)]">Archival Matte</h3>
+        <p class="text-sm text-gray-300 mt-2">Acid-free, museum-safe paper for vibrant art that lasts decades.</p>
       </div>
-      <div class="bg-white rounded-xl p-6 shadow">
-        <h3 class="font-semibold">Luster / Semi-Gloss</h3>
-        <p class="text-sm text-gray-600 mt-2">Balanced sheen for vivid colors and cosmic night sky contrast.</p>
+      <div class="bg-[var(--cosmic-blue)] rounded-xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.1s;">
+        <h3 class="font-semibold text-[var(--accent)]">Luster / Semi-Gloss</h3>
+        <p class="text-sm text-gray-300 mt-2">Balanced sheen for vivid colors and cosmic contrast.</p>
       </div>
-      <div class="bg-white rounded-xl p-6 shadow">
-        <h3 class="font-semibold">Framing Options</h3>
-        <p class="text-sm text-gray-600 mt-2">Wooden frames, museum float frames, and custom sizes for every home decor style.</p>
+      <div class="bg-[var(--cosmic-blue)] rounded-xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.2s;">
+        <h3 class="font-semibold text-[var(--accent)]">Framing Options</h3>
+        <p class="text-sm text-gray-300 mt-2">Wooden and museum float frames for every decor style.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHY -->
-<section class="py-12 bg-gray-900 text-white">
-  <div class="container-max px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Why Choose Cosmic Canvas?</h2>
-    <p class="max-w-3xl mx-auto text-lg text-gray-300 mb-8">Every product is a piece of art — printed with unmatched quality, designed with passion, and shipped with care. Affordable luxury for Indian homes and cosmic art lovers.</p>
+<section class="py-16 bg-[var(--cosmic-dark)]">
+  <div class="container-max text-center">
+    <h2 class="text-3xl font-bold mb-6">Why Choose Cosmic Canvas?</h2>
+    <p class="max-w-3xl mx-auto text-lg text-gray-300 mb-8">Every product is a piece of art — printed with unmatched quality, designed with passion, and shipped with care.</p>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="p-6 bg-gray-800 rounded-xl shadow">
-        <h4 class="font-semibold mb-2">Premium Materials</h4>
-        <p class="text-sm text-gray-300">Archival-grade prints, fine cotton fabrics and durable ceramics that last decades.</p>
+      <div class="p-6 bg-[var(--cosmic-blue)] rounded-xl shadow-lg card-hover fade-in">
+        <h4 class="font-semibold text-[var(--accent)] mb-2">Premium Materials</h4>
+        <p class="text-sm text-gray-300">Archival prints, fine cotton fabrics, and durable ceramics.</p>
       </div>
-      <div class="p-6 bg-gray-800 rounded-xl shadow">
-        <h4 class="font-semibold mb-2">Curated Editions</h4>
-        <p class="text-sm text-gray-300">Limited runs, seasonal collections, and exclusive cosmic designs.</p>
+      <div class="p-6 bg-[var(--cosmic-blue)] rounded-xl shadow-lg card-hover fade-in" style="animation-delay: 0.1s;">
+        <h4 class="font-semibold text-[var(--accent)] mb-2">Curated Editions</h4>
+        <p class="text-sm text-gray-300">Limited runs and exclusive cosmic designs.</p>
       </div>
-      <div class="p-6 bg-gray-800 rounded-xl shadow">
-        <h4 class="font-semibold mb-2">Fast India Delivery</h4>
-        <p class="text-sm text-gray-300">We partner with local labs to ensure fast, reliable shipping nationwide.</p>
+      <div class="p-6 bg-[var(--cosmic-blue)] rounded-xl shadow-lg card-hover fade-in" style="animation-delay: 0.2s;">
+        <h4 class="font-semibold text-[var(--accent)] mb-2">Fast India Delivery</h4>
+        <p class="text-sm text-gray-300">Reliable nationwide shipping in 3–7 days.</p>
       </div>
     </div>
   </div>
@@ -276,82 +329,98 @@
 
 <!-- TESTIMONIALS -->
 <section class="py-16">
-  <div class="container-max px-6 text-center">
+  <div class="container-max text-center">
     <h2 class="text-3xl font-bold mb-8">What Our Customers Say</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-2xl p-6 shadow">
-        <p class="text-gray-700 mb-4">“The prints look absolutely stunning in my living room. Premium quality at a fair price!”</p>
-        <h4 class="font-semibold">— Anjali R.</h4>
+      <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in">
+        <p class="text-gray-300 mb-4">“The prints look absolutely stunning in my living room. Premium quality!”</p>
+        <h4 class="font-semibold text-[var(--accent)]">— Anjali R.</h4>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow">
-        <p class="text-gray-700 mb-4">“Loved the t-shirt quality. Soft, premium and the artwork stands out beautifully.”</p>
-        <h4 class="font-semibold">— Rohit S.</h4>
+      <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.1s;">
+        <p class="text-gray-300 mb-4">“Loved the t-shirt quality. The artwork stands out beautifully.”</p>
+        <h4 class="font-semibold text-[var(--accent)]">— Rohit S.</h4>
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow">
-        <p class="text-gray-700 mb-4">“Cosmic Canvas mugs make my mornings feel luxurious. Highly recommend!”</p>
-        <h4 class="font-semibold">— Neha K.</h4>
+      <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg card-hover fade-in" style="animation-delay: 0.2s;">
+        <p class="text-gray-300 mb-4">“Cosmic Canvas mugs make my mornings feel luxurious.”</p>
+        <h4 class="font-semibold text-[var(--accent)]">— Neha K.</h4>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT / FAQ (SEO Content) -->
-<section id="about" class="py-16 bg-gray-50">
-  <div class="container-max px-6">
-    <h2 class="text-3xl font-bold mb-6 text-center">About Cosmic Canvas</h2>
-    <p class="text-gray-700 max-w-3xl mx-auto mb-4">Cosmic Canvas is a premium Indian brand bringing cosmic-inspired art and photography to your walls and lifestyle. Our mission is to combine fine art quality with a modern aesthetic that captures the beauty of the universe.</p>
-    <p class="text-gray-700 max-w-3xl mx-auto mb-4">All prints are created using archival papers, museum-grade inks, and sustainable materials. We carefully curate each collection, from A3 framed prints to cosmic-themed merchandise.</p>
-    <h3 class="text-xl font-semibold mt-6 mb-2">Frequently Asked Questions</h3>
-    <ul class="list-disc pl-6 text-gray-700">
-      <li>Do you ship across India? — Yes, typically within 3–7 days.</li>
-      <li>Can I order a custom print? — Absolutely, upload your photo for a mockup.</li>
-      <li>Are your materials eco-friendly? — Yes, we prioritize sustainable production.</li>
-      <li>Do you offer gift wrapping? — Yes, for select products at checkout.</li>
+<!-- ABOUT / FAQ -->
+<section id="about" class="py-16 bg-[var(--cosmic-dark)]">
+  <div class="container-max text-center">
+    <h2 class="text-3xl font-bold mb-6">About Cosmic Canvas</h2>
+    <p class="text-gray-300 max-w-3xl mx-auto mb-6">Cosmic Canvas brings cosmic-inspired art and photography to Indian homes. We combine fine art quality with a modern aesthetic to capture the universe's beauty.</p>
+    <p class="text-gray-300 max-w-3xl mx-auto mb-6">Our prints use archival papers and sustainable materials. Each collection is curated for astronomy lovers and art enthusiasts.</p>
+    <h3 class="text-xl font-semibold mt-8 mb-4">Frequently Asked Questions</h3>
+    <ul class="list-disc pl-6 text-gray-300 text-left max-w-2xl mx-auto">
+      <li class="mb-2">Do you ship across India? — Yes, typically within 3–7 days.</li>
+      <li class="mb-2">Can I order a custom print? — Upload your photo for a mockup.</li>
+      <li class="mb-2">Are your materials eco-friendly? — We prioritize sustainability.</li>
+      <li>Do you offer gift wrapping? — Available for select products.</li>
     </ul>
   </div>
 </section>
 
 <!-- NEWSLETTER -->
-<section class="py-16 bg-gradient-to-r from-indigo-600 to-pink-500 text-white">
-  <div class="container-max px-6 text-center">
+<section class="py-16 bg-gradient-to-r from-indigo-600 to-pink-500">
+  <div class="container-max text-center">
     <h2 class="text-3xl font-bold mb-4">Join the Cosmic Circle</h2>
-    <p class="max-w-2xl mx-auto mb-6">Get exclusive discounts, new drops, and wallpapers directly to your inbox. Unsubscribe anytime.</p>
-    <form action="https://formspree.io/f/your-form-id" method="POST" class="max-w-md mx-auto flex">
-      <input type="email" name="email" placeholder="Enter your email" class="flex-grow p-3 rounded-l-xl text-black" required />
-      <button type="submit" class="px-6 py-3 bg-white text-black rounded-r-xl">Subscribe</button>
-    </form>
+    <p class="max-w-2xl mx-auto mb-6 text-gray-200">Exclusive discounts, new drops, and cosmic wallpapers to your inbox.</p>
+    <div class="max-w-md mx-auto flex">
+      <input type="email" name="email" placeholder="Enter your email" class="flex-grow p-3 rounded-l-xl text-black focus:outline-none" required />
+      <button type="submit" class="px-6 py-3 bg-white text-indigo-600 rounded-r-xl btn-hover">Subscribe</button>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT / FOOTER -->
-<footer id="contact" class="py-12 bg-gray-900 text-gray-200">
-  <div class="container-max px-6 grid md:grid-cols-2 gap-6">
+<footer id="contact" class="py-12 bg-[var(--cosmic-dark)]">
+  <div class="container-max grid md:grid-cols-2 gap-8">
     <div>
-      <h3 class="text-xl font-semibold mb-2">Contact & Custom Orders</h3>
-      <p class="text-sm text-gray-300 mb-4">For custom orders, wholesale, and collaborations — message us on WhatsApp or email.</p>
-      <a href="https://wa.me/your-number" class="inline-block px-6 py-3 bg-green-500 text-white rounded-lg">Chat on WhatsApp</a>
+      <h3 class="text-xl font-semibold mb-4">Contact & Custom Orders</h3>
+      <p class="text-sm text-gray-300 mb-4">For custom orders, wholesale, or collaborations — reach out via WhatsApp or email.</p>
+      <a href="https://wa.me/your-number" class="inline-block px-6 py-3 bg-green-500 text-white rounded-lg btn-hover">Chat on WhatsApp</a>
     </div>
-    <div class="bg-white rounded-2xl p-6 shadow">
-      <h4 class="font-semibold">Studio</h4>
-      <p class="text-sm text-gray-700">Kottiyoor / Bangalore (studio by appointment)</p>
-      <p class="text-sm text-gray-700 mt-2">Phone: +91 99999 99999</p>
-      <div class="flex gap-3 mt-4">
-        <a href="#" class="text-sm text-gray-900">Instagram</a>
-        <a href="#" class="text-sm text-gray-900">Pinterest</a>
-        <a href="#" class="text-sm text-gray-900">Redbubble</a>
+    <div class="bg-[var(--cosmic-blue)] rounded-2xl p-6 shadow-lg">
+      <h4 class="font-semibold text-[var(--accent)]">Studio</h4>
+      <p class="text-sm text-gray-300">Kottiyoor / Bangalore (by appointment)</p>
+      <p class="text-sm text-gray-300 mt-2">Phone: +91 99999 99999</p>
+      <div class="flex gap-4 mt-4">
+        <a href="#" class="text-sm text-[var(--accent)] hover:underline">Instagram</a>
+        <a href="#" class="text-sm text-[var(--accent)] hover:underline">Pinterest</a>
+        <a href="#" class="text-sm text-[var(--accent)] hover:underline">Redbubble</a>
       </div>
     </div>
   </div>
-  <div class="container-max px-6 mt-8 text-center text-sm text-gray-400">&copy; 2025 Cosmic Canvas — All rights reserved.</div>
+  <div class="container-max mt-8 text-center text-sm text-gray-400">&copy; 2025 Cosmic Canvas — All rights reserved.</div>
 </footer>
 
 </main>
 
 <script>
-  // simple mobile menu toggle
-  document.getElementById('menuBtn')?.addEventListener('click', function(){
-    alert('Mobile menu placeholder — we can add a slide-out menu if you want.');
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('translate-y-0');
+    menuBtn.textContent = mobileMenu.classList.contains('hidden') ? 'Menu' : 'Close';
   });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
